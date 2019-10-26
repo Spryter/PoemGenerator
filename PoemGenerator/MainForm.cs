@@ -14,7 +14,7 @@ namespace PoemGenerator
 		{
 			InitializeComponent();
 			_ontology = OntologyLoader.OntologyLoader.LoadByPath(
-				@"C: \Users\Fox\source\repos\PoemGenerator\PoemGenerator\black_poems.ont");
+                @"C:\Users\student\Desktop\СИИ\PoemGenerator\PoemGenerator\black_poems.ont");
 		}
 
 		private void btGenerate_Click(object sender, EventArgs e)
@@ -34,12 +34,12 @@ namespace PoemGenerator
 			var poemStrings = _ontology.Nodes
 				.Get("стихотворение")
 				.To("a_part_of")
-				.OrderBy(s => s.To("order").FirstOrDefault().Name);
+				.OrderBy(s => s.From("order").FirstOrDefault().Name);
 			foreach (IReadOnlyNode poemString in poemStrings)
 			{
 				var stringParts = poemString
 					.To("a_part_of")
-					.OrderBy(se => se.To("order").FirstOrDefault().Name);
+					.OrderBy(se => se.From("order").FirstOrDefault().Name);
 				foreach (IReadOnlyNode stringPart in stringParts)
 				{
 					var partElement = stringPart.From("element").FirstOrDefault();
