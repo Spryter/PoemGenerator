@@ -1,0 +1,223 @@
+{
+    "last_id": "122",
+    "namespaces": {
+        "default": "http://knova.ru/user/1571847376741",
+        "ontolis-avis": "http://knova.ru/ontolis-avis",
+        "owl": "http://www.w3.org/2002/07/owl",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema",
+        "xsd": "http://www.w3.org/2001/XMLSchema"
+    },
+    "nodes": [
+        {
+            "attributes": {
+            },
+            "id": "70",
+            "name": "сунуть",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 121,
+            "position_y": 655
+        },
+        {
+            "attributes": {
+            },
+            "id": "72",
+            "name": ".",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 647,
+            "position_y": 563
+        },
+        {
+            "attributes": {
+            },
+            "id": "74",
+            "name": "опасная ситуация",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 410,
+            "position_y": 203
+        },
+        {
+            "attributes": {
+            },
+            "id": "77",
+            "name": "ребенок",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 788,
+            "position_y": 199
+        },
+        {
+            "attributes": {
+            },
+            "id": "78",
+            "name": "мальчик",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 811,
+            "position_y": 343
+        },
+        {
+            "attributes": {
+            },
+            "id": "79",
+            "name": "девочка",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 898,
+            "position_y": 297
+        },
+        {
+            "attributes": {
+            },
+            "id": "86",
+            "name": "пальчики",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 858,
+            "position_y": 631
+        },
+        {
+            "attributes": {
+            },
+            "id": "90",
+            "name": "розетка",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 568,
+            "position_y": 757
+        },
+        {
+            "attributes": {
+            },
+            "id": "110",
+            "name": ".",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 367,
+            "position_y": 306
+        },
+        {
+            "attributes": {
+            },
+            "id": "113",
+            "name": "опасный предмет",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 505,
+            "position_y": 310
+        },
+        {
+            "attributes": {
+            },
+            "id": "116",
+            "name": "безопасное действие",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 89,
+            "position_y": 365
+        },
+        {
+            "attributes": {
+            },
+            "id": "118",
+            "name": "безопасный локатив",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "position_x": 334,
+            "position_y": 489
+        }
+    ],
+    "relations": [
+        {
+            "attributes": {
+            },
+            "destination_node_id": "77",
+            "id": "80",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "78"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "77",
+            "id": "81",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "79"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "77",
+            "id": "82",
+            "name": "agent",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "72"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "86",
+            "id": "92",
+            "name": "object",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "72"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "90",
+            "id": "93",
+            "name": "locative",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "72"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "74",
+            "id": "112",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "110"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "113",
+            "id": "114",
+            "name": "object",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "110"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "116",
+            "id": "117",
+            "name": "action",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "110"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "118",
+            "id": "120",
+            "name": "locative",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "110"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "116",
+            "id": "121",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "70"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "110",
+            "id": "122",
+            "name": "is_a",
+            "namespace": "http://knova.ru/user/1571847376741",
+            "source_node_id": "72"
+        }
+    ],
+    "visualize_ont_path": ""
+}
