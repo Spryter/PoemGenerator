@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using PoemGenerator.OntologyLoader.Model;
+using PoemGenerator.OntologyLoader.Model.Abstractions;
 
 namespace PoemGenerator
 {
@@ -13,7 +14,7 @@ namespace PoemGenerator
 		{
 			InitializeComponent();
 			_ontology = OntologyLoader.OntologyLoader.LoadByPath(
-				@"C:\Users\Антон Зыков\Documents\Учеба\PoemGenerator\PoemGenerator\black_poems.ont");
+				@"C: \Users\Fox\source\repos\PoemGenerator\PoemGenerator\black_poems.ont");
 		}
 
 		private void btGenerate_Click(object sender, EventArgs e)
@@ -30,6 +31,25 @@ namespace PoemGenerator
 			var rnd = new Random();
 			var index = rnd.Next(elements.Count);
 			var element = elements.ElementAt(index);
+			var poemStrings = _ontology.Nodes
+				.Get("стихотворение")
+				.To("a_part_of")
+				.OrderBy(s => s.To("order").FirstOrDefault().Name);
+			foreach (IReadOnlyNode poemString in poemStrings)
+			{
+				var stringParts = poemString
+					.To("a_part_of")
+					.OrderBy(se => se.To("order").FirstOrDefault().Name);
+				foreach (IReadOnlyNode stringPart in stringParts)
+				{
+					var partElement = stringPart.From("element").FirstOrDefault();
+					switch (partElement.Name)
+					{
+						//case для обработки разных типов элементов
+					}
+					// конкатенация частей строк
+				}
+			}
 			rtbPoem.Text = element.Name;
 		}
 	}
