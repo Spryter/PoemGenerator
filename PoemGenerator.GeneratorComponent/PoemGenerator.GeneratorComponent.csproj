@@ -41,11 +41,12 @@
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PoemGenerator.OntologyComponent.Model\PoemGenerator.OntologyComponent.Model.csproj">
+    <ProjectReference Include="..\PoemGenerator.OntologyModel\PoemGenerator.OntologyModel.csproj">
       <Project>{8e256493-a732-492c-9e0a-e17a69fc5b34}</Project>
-      <Name>PoemGenerator.OntologyComponent.Model</Name>
+      <Name>PoemGenerator.OntologyModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

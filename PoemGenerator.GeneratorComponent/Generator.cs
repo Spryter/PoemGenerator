@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using PoemGenerator.OntologyComponent.Model;
+using PoemGenerator.OntologyModel;
 
 namespace PoemGenerator.GeneratorComponent
 {
     public class Generator
-    {
+    { 
         private readonly Ontology _ontology;
         
         public Generator(Ontology ontology)
@@ -17,28 +18,28 @@ namespace PoemGenerator.GeneratorComponent
         {
             var elements = _ontology.Nodes
                 .Get("стихотворение")
-                .To("a_part_of")
+                .To(Relations.APartOf)
                 .Get("1 строка")
-                .To("a_part_of")
-                .FirstOrDefault(x => x.From("order").Get("1") != null)
-                .From("element")
+                .To(Relations.APartOf)
+                .FirstOrDefault(x => x.From(Relations.Order).Get("1") != null)
+                .From(Relations.Element)
                 .FirstOrDefault()
-                .To("is_a");
+                .To(Relations.IsA);
             var rnd = new Random();
             var index = rnd.Next(elements.Count);
             var element = elements.ElementAt(index);
             var poemStrings = _ontology.Nodes
                 .Get("стихотворение")
-                .To("a_part_of")
-                .OrderBy(s => s.From("order").FirstOrDefault().Name);
+                .To(Relations.APartOf)
+                .OrderBy(s => s.From(Relations.Order).FirstOrDefault().Name);
             foreach (var poemString in poemStrings)
             {
                 var stringParts = poemString
-                    .To("a_part_of")
-                    .OrderBy(se => se.From("order").FirstOrDefault().Name);
+                    .To(Relations.APartOf)
+                    .OrderBy(se => se.From(Relations.Order).FirstOrDefault().Name);
                 foreach (var stringPart in stringParts)
                 {
-                    var partElement = stringPart.From("element").FirstOrDefault();
+                    var partElement = stringPart.From(Relations.Element).FirstOrDefault();
                     switch (partElement.Name)
                     {
                         //case для обработки разных типов элементов

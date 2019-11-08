@@ -65,7 +65,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="black_poems.ont" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,13 +83,13 @@
       <Project>{22cd64b0-b965-4209-9f44-d7c2e157a9e0}</Project>
       <Name>PoemGenerator.GeneratorComponent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PoemGenerator.OntologyComponent.Loader\PoemGenerator.OntologyComponent.Loader.csproj">
+    <ProjectReference Include="..\PoemGenerator.OntolisAdapter\PoemGenerator.OntolisAdapter.csproj">
       <Project>{a7593a0b-53f0-4b91-8150-f6219b079625}</Project>
-      <Name>PoemGenerator.OntologyComponent.Loader</Name>
+      <Name>PoemGenerator.OntolisAdapter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PoemGenerator.OntologyComponent.Model\PoemGenerator.OntologyComponent.Model.csproj">
+    <ProjectReference Include="..\PoemGenerator.OntologyModel\PoemGenerator.OntologyModel.csproj">
       <Project>{8e256493-a732-492c-9e0a-e17a69fc5b34}</Project>
-      <Name>PoemGenerator.OntologyComponent.Model</Name>
+      <Name>PoemGenerator.OntologyModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
