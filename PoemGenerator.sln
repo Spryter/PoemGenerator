@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.App", "PoemGenerator.App\PoemGenerator.App.csproj", "{907675BF-282C-4561-855A-C21D52D186D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.OntologyComponent.Model", "PoemGenerator.OntologyComponent.Model\PoemGenerator.OntologyComponent.Model.csproj", "{8E256493-A732-492C-9E0A-E17A69FC5B34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.OntologyModel", "PoemGenerator.OntologyModel\PoemGenerator.OntologyModel.csproj", "{8E256493-A732-492C-9E0A-E17A69FC5B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.OntologyComponent.Loader", "PoemGenerator.OntologyComponent.Loader\PoemGenerator.OntologyComponent.Loader.csproj", "{A7593A0B-53F0-4B91-8150-F6219B079625}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.OntolisAdapter", "PoemGenerator.OntolisAdapter\PoemGenerator.OntolisAdapter.csproj", "{A7593A0B-53F0-4B91-8150-F6219B079625}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoemGenerator.GeneratorComponent", "PoemGenerator.GeneratorComponent\PoemGenerator.GeneratorComponent.csproj", "{22CD64B0-B965-4209-9F44-D7C2E157A9E0}"
 EndProject

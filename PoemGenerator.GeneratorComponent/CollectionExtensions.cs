@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using PoemGenerator.OntologyComponent.Model.Abstractions;
-using PoemGenerator.OntologyComponent.Model.Collections;
+using PoemGenerator.OntologyModel.Abstractions;
+using PoemGenerator.OntologyModel.Collections;
 
 namespace PoemGenerator.GeneratorComponent
 {

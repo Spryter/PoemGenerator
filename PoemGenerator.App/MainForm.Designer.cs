@@ -33,6 +33,8 @@
 			this.btGenerate = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.ChooseOntologyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.выбратьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -75,10 +77,26 @@
 			// 
 			// ChooseOntologyMenuItem
 			// 
+			this.ChooseOntologyMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+				{this.выбратьToolStripMenuItem, this.редактироватьToolStripMenuItem});
 			this.ChooseOntologyMenuItem.Name = "ChooseOntologyMenuItem";
-			this.ChooseOntologyMenuItem.Size = new System.Drawing.Size(131, 20);
-			this.ChooseOntologyMenuItem.Text = "Выбрать онтологию";
-			this.ChooseOntologyMenuItem.Click += new System.EventHandler(this.ChooseOntology_Click);
+			this.ChooseOntologyMenuItem.Size = new System.Drawing.Size(79, 20);
+			this.ChooseOntologyMenuItem.Text = "Онтология";
+			// 
+			// выбратьToolStripMenuItem
+			// 
+			this.выбратьToolStripMenuItem.Name = "выбратьToolStripMenuItem";
+			this.выбратьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+			this.выбратьToolStripMenuItem.Text = "Выбрать";
+			this.выбратьToolStripMenuItem.Click += new System.EventHandler(this.ChooseOntology_Click);
+			// 
+			// редактироватьToolStripMenuItem
+			// 
+			this.редактироватьToolStripMenuItem.Enabled = false;
+			this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+			this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+			this.редактироватьToolStripMenuItem.Text = "Редактировать";
+			this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.EditOntology_Click);
 			// 
 			// MainForm
 			// 
@@ -105,6 +123,8 @@
 		private System.Windows.Forms.Button btGenerate;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem ChooseOntologyMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem выбратьToolStripMenuItem;
 	}
 }
 
