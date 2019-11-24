@@ -6,40 +6,79 @@ using PoemGenerator.OntologyModel;
 namespace PoemGenerator.GeneratorComponent
 {
     public class Generator
-    { 
-        private readonly Ontology _ontology;
+    {
+        public Ontology Ontology { get; }
         
         public Generator(Ontology ontology)
         {
-            _ontology = ontology;
+            Ontology = ontology;
         }
-        
+
+        public string GenerateDangerSituation()
+        {
+            var situations = Ontology.Nodes
+                .Get("опасная ситуация")
+                .ToIsA()
+                .ToNodeCollection();
+
+            var randomObject = situations
+                .SelectMany(x => x.ToIsANestedFromObject())
+                .ToNodeCollection()
+                .GetRandom();
+			
+            var randomAction = situations
+                .SelectMany(x => x.ToIsANestedFromAction())
+                .ToNodeCollection()
+                .GetRandom();
+			
+            var randomLocative = situations
+                .SelectMany(x => x.ToIsANestedFromLocative())
+                .ToNodeCollection()
+                .GetRandom();
+            
+            return $"{randomAction} {randomObject} {randomLocative}";
+        }
+
+        public string GenerateChild()
+        {
+            var child = Ontology.Nodes
+                .Get("ситуация")
+                .FromAgent()
+                .FirstOrDefault()
+                .ToIsA()
+                .Get("ребенок")
+                .ToIsANested()
+                .GetRandom();
+
+            return child.Name;
+        }
+
         public string GeneratePoem()
         {
-            var elements = _ontology.Nodes
-                .Get("стихотворение")
-                .To(Relations.APartOf)
-                .Get("1 строка")
-                .To(Relations.APartOf)
-                .FirstOrDefault(x => x.From(Relations.Order).Get("1") != null)
-                .From(Relations.Element)
+			var elements = Ontology.Nodes
+				.Get("стихотворение")
+				.ToAPartOf()
+				.Get("1 строка")
+				.ToAPartOf()
+                .FirstOrDefault(x => x.FromOrder().Get("1") != null)
+                .FromElement()
                 .FirstOrDefault()
-                .To(Relations.IsA);
+                .ToIsA();
             var rnd = new Random();
             var index = rnd.Next(elements.Count);
             var element = elements.ElementAt(index);
-            var poemStrings = _ontology.Nodes
+            var poemStrings = Ontology.Nodes
                 .Get("стихотворение")
-                .To(Relations.APartOf)
-                .OrderBy(s => s.From(Relations.Order).FirstOrDefault().Name);
+                .ToAPartOf()
+                .OrderBy(s => s.FromOrder().FirstOrDefault().Name);
             foreach (var poemString in poemStrings)
             {
                 var stringParts = poemString
-                    .To(Relations.APartOf)
-                    .OrderBy(se => se.From(Relations.Order).FirstOrDefault().Name);
+                    .ToAPartOf()
+                    .OrderBy(se => se.FromOrder().FirstOrDefault().Name);
                 foreach (var stringPart in stringParts)
                 {
-                    var partElement = stringPart.From(Relations.Element).FirstOrDefault();
+                    var partElement = stringPart.FromElement().FirstOrDefault();
                     switch (partElement.Name)
                     {
                         //case для обработки разных типов элементов

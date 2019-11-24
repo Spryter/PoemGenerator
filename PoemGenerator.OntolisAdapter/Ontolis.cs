@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using PoemGenerator.OntolisAdapter.Exceptions;
 using PoemGenerator.OntolisAdapter.JsonModel;
 using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Collections;
@@ -37,11 +38,21 @@ namespace PoemGenerator.OntolisAdapter
 
         public Ontology Reload()
         {
+            if (_ontologyPath == null)
+            {
+                throw new OntologyPathNotInitializedException();
+            }
+
             return LoadByPath(_ontologyPath);
         }
         
         public void Open()
         {
+            if (_ontologyPath == null)
+            {
+                throw new OntologyPathNotInitializedException();
+            }
+
             var process = Process.Start(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, OntolisBuildPath), _ontologyPath);
             process?.WaitForExit();
         }

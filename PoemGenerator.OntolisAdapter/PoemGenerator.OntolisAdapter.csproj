@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\OntologyPathIsEmptyExceptions.cs" />
     <Compile Include="JsonModel\JsonNode.cs" />
     <Compile Include="JsonModel\JsonOntology.cs" />
     <Compile Include="JsonModel\JsonRelation.cs" />
