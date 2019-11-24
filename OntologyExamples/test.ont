@@ -1,5 +1,5 @@
 {
-    "last_id": "167",
+    "last_id": "224",
     "namespaces": {
         "default": "http://knova.ru/user/1571847376741",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -14,261 +14,392 @@
             },
             "id": "72",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 839,
-            "position_y": 285
+            "position_x": 1551,
+            "position_y": 550
         },
         {
             "attributes": {
             },
             "id": "74",
             "name": "опасная ситуация",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 451,
-            "position_y": -32
+            "position_x": 1089,
+            "position_y": 257
         },
         {
             "attributes": {
             },
             "id": "77",
             "name": "ребенок",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 1028,
-            "position_y": 27
+            "position_x": 1732,
+            "position_y": 351
         },
         {
             "attributes": {
             },
             "id": "78",
             "name": "мальчик",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 993,
-            "position_y": 211
+            "position_x": 1624,
+            "position_y": 507
         },
         {
             "attributes": {
             },
             "id": "79",
             "name": "девочка",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 1086,
-            "position_y": 215
+            "position_x": 1807,
+            "position_y": 519
         },
         {
             "attributes": {
             },
             "id": "86",
             "name": "пальчики",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 1037,
-            "position_y": 429
+            "position_x": 1764,
+            "position_y": 780
         },
         {
             "attributes": {
             },
             "id": "90",
             "name": "розетка",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 946,
-            "position_y": 458
+            "position_x": 1616,
+            "position_y": 796
         },
         {
             "attributes": {
             },
             "id": "110",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 725,
-            "position_y": 142
+            "position_x": 1484,
+            "position_y": 450
         },
         {
             "attributes": {
             },
             "id": "113",
             "name": "безопасный предмет",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 755,
-            "position_y": 63
+            "position_x": 1457,
+            "position_y": 354
         },
         {
             "attributes": {
             },
             "id": "116",
             "name": "опасное действие",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 525,
-            "position_y": 143
+            "position_x": 1229,
+            "position_y": 467
         },
         {
             "attributes": {
             },
             "id": "118",
             "name": "опасный локатив",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 608,
-            "position_y": 257
+            "position_x": 1250,
+            "position_y": 565
         },
         {
             "attributes": {
             },
             "id": "125",
             "name": "ситуация",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 175,
-            "position_y": -124
+            "position_x": 879,
+            "position_y": 200
         },
         {
             "attributes": {
             },
             "id": "127",
             "name": "безопасная ситуация",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": -279,
-            "position_y": -26
+            "position_x": 446,
+            "position_y": 295
         },
         {
             "attributes": {
             },
             "id": "129",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 99,
-            "position_y": 174
+            "position_x": 865,
+            "position_y": 436
         },
         {
             "attributes": {
             },
             "id": "131",
             "name": "опасный предмет",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": -46,
-            "position_y": 75
+            "position_x": 705,
+            "position_y": 357
         },
         {
             "attributes": {
             },
             "id": "133",
             "name": "безопасное действие",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 249,
-            "position_y": 150
+            "position_x": 999,
+            "position_y": 460
         },
         {
             "attributes": {
             },
             "id": "135",
             "name": "безопасный локатив",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": -191,
-            "position_y": 135
+            "position_x": 513,
+            "position_y": 459
         },
         {
             "attributes": {
             },
             "id": "141",
             "name": "человек",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 1065,
-            "position_y": -121
+            "position_x": 1769,
+            "position_y": 203
         },
         {
             "attributes": {
             },
             "id": "143",
             "name": "взрослый",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 1117,
-            "position_y": 27
+            "position_x": 1821,
+            "position_y": 351
         },
         {
             "attributes": {
             },
             "id": "70",
             "name": "сунуть",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 673,
-            "position_y": 395
+            "position_x": 1219,
+            "position_y": 688
         },
         {
             "attributes": {
             },
             "id": "147",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 816,
-            "position_y": 456
+            "position_x": 1377,
+            "position_y": 736
         },
         {
             "attributes": {
             },
             "id": "149",
             "name": "вилочка",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 705,
-            "position_y": 549
+            "position_x": 959,
+            "position_y": 923
         },
         {
             "attributes": {
             },
             "id": "151",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 280,
-            "position_y": 296
+            "position_x": 984,
+            "position_y": 620
         },
         {
             "attributes": {
             },
             "id": "153",
             "name": "найти",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 405,
-            "position_y": 367
+            "position_x": 1078,
+            "position_y": 701
         },
         {
             "attributes": {
             },
             "id": "155",
             "name": "пулемет",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 171,
-            "position_y": 370
+            "position_x": 883,
+            "position_y": 752
         },
         {
             "attributes": {
             },
             "id": "157",
             "name": ".",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 0,
-            "position_y": 292
+            "position_x": 645,
+            "position_y": 574
         },
         {
             "attributes": {
             },
             "id": "160",
             "name": "тигр",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": 73,
-            "position_y": 424
+            "position_x": 776,
+            "position_y": 775
         },
         {
             "attributes": {
             },
             "id": "162",
             "name": "кормить",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": -155,
-            "position_y": 322
+            "position_x": 561,
+            "position_y": 681
         },
         {
             "attributes": {
             },
             "id": "164",
             "name": "цирк",
-            "namespace": "http://knova.ru/user/1571847376741",
-            "position_x": -74,
-            "position_y": 425
+            "position_x": 643,
+            "position_y": 775
+        },
+        {
+            "attributes": {
+            },
+            "id": "168",
+            "name": ".",
+            "position_x": 343,
+            "position_y": 438
+        },
+        {
+            "attributes": {
+            },
+            "id": "170",
+            "name": "безопасный локатив",
+            "position_x": 200,
+            "position_y": 589
+        },
+        {
+            "attributes": {
+            },
+            "id": "171",
+            "name": "безопасный предмет",
+            "position_x": 396,
+            "position_y": 659
+        },
+        {
+            "attributes": {
+            },
+            "id": "172",
+            "name": "безопасное действие",
+            "position_x": 435,
+            "position_y": 579
+        },
+        {
+            "attributes": {
+            },
+            "id": "176",
+            "name": ".",
+            "position_x": 358,
+            "position_y": 788
+        },
+        {
+            "attributes": {
+            },
+            "id": "180",
+            "name": "дома",
+            "position_x": 121,
+            "position_y": 740
+        },
+        {
+            "attributes": {
+            },
+            "id": "182",
+            "name": ".",
+            "position_x": 277,
+            "position_y": 896
+        },
+        {
+            "attributes": {
+            },
+            "id": "184",
+            "name": "ручка",
+            "position_x": 606,
+            "position_y": 889
+        },
+        {
+            "attributes": {
+            },
+            "id": "189",
+            "name": ".",
+            "position_x": 399,
+            "position_y": 947
+        },
+        {
+            "attributes": {
+            },
+            "id": "191",
+            "name": "открыть",
+            "position_x": 530,
+            "position_y": 947
+        },
+        {
+            "attributes": {
+            },
+            "id": "193",
+            "name": "шкаф",
+            "position_x": 270,
+            "position_y": 960
+        },
+        {
+            "attributes": {
+            },
+            "id": "195",
+            "name": "кладовка",
+            "position_x": 635,
+            "position_y": 986
+        },
+        {
+            "attributes": {
+            },
+            "id": "196",
+            "name": ".",
+            "position_x": 435,
+            "position_y": 1002
+        },
+        {
+            "attributes": {
+            },
+            "id": "199",
+            "name": ".",
+            "position_x": 1524,
+            "position_y": 939
+        },
+        {
+            "attributes": {
+            },
+            "id": "201",
+            "name": "нога",
+            "position_x": 1680,
+            "position_y": 963
+        },
+        {
+            "attributes": {
+            },
+            "id": "203",
+            "name": ".",
+            "position_x": 1357,
+            "position_y": 959
+        },
+        {
+            "attributes": {
+            },
+            "id": "205",
+            "name": "колодец",
+            "position_x": 1156,
+            "position_y": 941
+        },
+        {
+            "attributes": {
+            },
+            "id": "208",
+            "name": "кинуть",
+            "position_x": 1467,
+            "position_y": 981
+        },
+        {
+            "attributes": {
+            },
+            "id": "216",
+            "name": "пальчики",
+            "position_x": 1564,
+            "position_y": 273
+        },
+        {
+            "attributes": {
+            },
+            "id": "219",
+            "name": "розетка",
+            "position_x": 64,
+            "position_y": 862
         }
     ],
     "relations": [
@@ -278,7 +409,6 @@
             "destination_node_id": "77",
             "id": "80",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "78"
         },
         {
@@ -287,7 +417,6 @@
             "destination_node_id": "77",
             "id": "81",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "79"
         },
         {
@@ -296,7 +425,6 @@
             "destination_node_id": "86",
             "id": "92",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "72"
         },
         {
@@ -305,7 +433,6 @@
             "destination_node_id": "90",
             "id": "93",
             "name": "locative",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "72"
         },
         {
@@ -314,7 +441,6 @@
             "destination_node_id": "74",
             "id": "112",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "110"
         },
         {
@@ -323,7 +449,6 @@
             "destination_node_id": "113",
             "id": "114",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "110"
         },
         {
@@ -332,7 +457,6 @@
             "destination_node_id": "116",
             "id": "117",
             "name": "action",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "110"
         },
         {
@@ -341,7 +465,6 @@
             "destination_node_id": "118",
             "id": "120",
             "name": "locative",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "110"
         },
         {
@@ -350,7 +473,6 @@
             "destination_node_id": "110",
             "id": "122",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "72"
         },
         {
@@ -359,7 +481,6 @@
             "destination_node_id": "125",
             "id": "126",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "74"
         },
         {
@@ -368,7 +489,6 @@
             "destination_node_id": "125",
             "id": "128",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "127"
         },
         {
@@ -377,7 +497,6 @@
             "destination_node_id": "74",
             "id": "130",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "129"
         },
         {
@@ -386,7 +505,6 @@
             "destination_node_id": "131",
             "id": "132",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "129"
         },
         {
@@ -395,7 +513,6 @@
             "destination_node_id": "133",
             "id": "134",
             "name": "action",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "129"
         },
         {
@@ -404,7 +521,6 @@
             "destination_node_id": "135",
             "id": "136",
             "name": "locative",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "129"
         },
         {
@@ -413,7 +529,6 @@
             "destination_node_id": "141",
             "id": "142",
             "name": "agent",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "125"
         },
         {
@@ -422,7 +537,6 @@
             "destination_node_id": "141",
             "id": "144",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "77"
         },
         {
@@ -431,7 +545,6 @@
             "destination_node_id": "141",
             "id": "145",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "143"
         },
         {
@@ -440,7 +553,6 @@
             "destination_node_id": "70",
             "id": "146",
             "name": "action",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "72"
         },
         {
@@ -449,7 +561,6 @@
             "destination_node_id": "72",
             "id": "148",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "147"
         },
         {
@@ -458,7 +569,6 @@
             "destination_node_id": "149",
             "id": "150",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "147"
         },
         {
@@ -467,7 +577,6 @@
             "destination_node_id": "129",
             "id": "152",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "151"
         },
         {
@@ -476,7 +585,6 @@
             "destination_node_id": "153",
             "id": "154",
             "name": "action",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "151"
         },
         {
@@ -485,7 +593,6 @@
             "destination_node_id": "155",
             "id": "156",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "151"
         },
         {
@@ -494,7 +601,6 @@
             "destination_node_id": "129",
             "id": "158",
             "name": "is_a",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "157"
         },
         {
@@ -503,7 +609,6 @@
             "destination_node_id": "160",
             "id": "161",
             "name": "object",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "157"
         },
         {
@@ -512,7 +617,6 @@
             "destination_node_id": "162",
             "id": "163",
             "name": "action",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "157"
         },
         {
@@ -521,8 +625,231 @@
             "destination_node_id": "164",
             "id": "165",
             "name": "locative",
-            "namespace": "http://knova.ru/user/1571847376741",
             "source_node_id": "157"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "127",
+            "id": "169",
+            "name": "is_a",
+            "source_node_id": "168"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "172",
+            "id": "173",
+            "name": "action",
+            "source_node_id": "168"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "170",
+            "id": "174",
+            "name": "locative",
+            "source_node_id": "168"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "171",
+            "id": "175",
+            "name": "object",
+            "source_node_id": "168"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "168",
+            "id": "177",
+            "name": "is_a",
+            "source_node_id": "176"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "149",
+            "id": "178",
+            "name": "object",
+            "source_node_id": "176"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "153",
+            "id": "179",
+            "name": "action",
+            "source_node_id": "176"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "180",
+            "id": "181",
+            "name": "locative",
+            "source_node_id": "176"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "176",
+            "id": "183",
+            "name": "is_a",
+            "source_node_id": "182"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "184",
+            "id": "185",
+            "name": "object",
+            "source_node_id": "182"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "176",
+            "id": "190",
+            "name": "is_a",
+            "source_node_id": "189"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "191",
+            "id": "192",
+            "name": "action",
+            "source_node_id": "189"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "193",
+            "id": "194",
+            "name": "object",
+            "source_node_id": "189"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "189",
+            "id": "197",
+            "name": "is_a",
+            "source_node_id": "196"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "195",
+            "id": "198",
+            "name": "object",
+            "source_node_id": "196"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "147",
+            "id": "200",
+            "name": "is_a",
+            "source_node_id": "199"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "201",
+            "id": "202",
+            "name": "locative",
+            "source_node_id": "199"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "147",
+            "id": "204",
+            "name": "is_a",
+            "source_node_id": "203"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "205",
+            "id": "207",
+            "name": "locative",
+            "source_node_id": "203"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "208",
+            "id": "209",
+            "name": "action",
+            "source_node_id": "203"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "171",
+            "id": "210",
+            "name": "is_a",
+            "source_node_id": "184"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "171",
+            "id": "211",
+            "name": "is_a",
+            "source_node_id": "195"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "131",
+            "id": "214",
+            "name": "is_a",
+            "source_node_id": "149"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "131",
+            "id": "215",
+            "name": "is_a",
+            "source_node_id": "160"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "216",
+            "id": "217",
+            "name": "",
+            "source_node_id": "77"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "86",
+            "id": "218",
+            "name": "has",
+            "source_node_id": "77"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "219",
+            "id": "220",
+            "name": "",
+            "source_node_id": "219"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "180",
+            "id": "222",
+            "name": "a_part_of",
+            "source_node_id": "219"
         }
     ],
     "visualize_ont_path": ""

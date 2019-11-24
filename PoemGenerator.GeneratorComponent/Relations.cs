@@ -1,6 +1,6 @@
 ﻿namespace PoemGenerator.GeneratorComponent
 {
-    public class Relations
+    public static class Relations
     {
         public const string IsA = "is_a";
         
@@ -9,5 +9,13 @@
         public const string Order = "order";
         
         public const string Element = "element";
+
+        public const string Object = "object";
+
+        public const string Locative = "locative";
+
+        public const string Action = "action";
+
+        public const string Agent = "agent";
     }
 }
