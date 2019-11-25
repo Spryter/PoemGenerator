@@ -15,24 +15,14 @@ namespace PoemGenerator.App
 		private readonly Ontolis _ontolis;
 		
 		private Generator _generator;
+
+		private ToolStripMenuItem _editOntologyMenuItem;
+
+		private Button _generateButton;
 		
-		private Action _enableEditOntologyMenuItem;
-		
-		private Action<bool> _setGenerateButtonEnabled;
+		private RichTextBox _poemTextBox;
 
-		private Action<string> _updatePoemTextBox;
-
-		private Action<IEnumerable<IReadOnlyNode>> _updateObjectComboBox;
-
-		private Action<IEnumerable<IReadOnlyNode>> _updateActionComboBox;
-
-		private Action<IEnumerable<IReadOnlyNode>> _updateLocativeComboBox;
-
-		private Func<IReadOnlyNode> _getSelectedObject;
-
-		private Func<IReadOnlyNode> _getSelectedAction;
-
-		private Func<IReadOnlyNode> _getSelectedLocative;
+		private SafeSituationGroupBox _safeSituationGroupBox;
 		
 		public MainForm()
 		{
@@ -47,16 +37,15 @@ namespace PoemGenerator.App
             var openOntologyMenuItem = new ToolStripMenuItem("Открыть");
             openOntologyMenuItem.Click += OpenOntologyClick;
 
-            var editOntologyMenuItem = new ToolStripMenuItem("Редактировать")
+            _editOntologyMenuItem = new ToolStripMenuItem("Редактировать")
             {
                 Enabled = false
             };
-            _enableEditOntologyMenuItem = () => editOntologyMenuItem.Enabled = true;
-            editOntologyMenuItem.Click += EditOntologyClick;
+            _editOntologyMenuItem.Click += EditOntologyClick;
 
             var ontologyMenuItem = new ToolStripMenuItem("Онтология");
             ontologyMenuItem.DropDownItems.Add(openOntologyMenuItem);
-            ontologyMenuItem.DropDownItems.Add(editOntologyMenuItem);
+            ontologyMenuItem.DropDownItems.Add(_editOntologyMenuItem);
 
             var menu = new MenuStrip();
             menu.Items.Add(ontologyMenuItem);
@@ -66,99 +55,35 @@ namespace PoemGenerator.App
 
         private Button CreateGenerateButton()
         {
-	        var buttonGenerate = new Button
+	        _generateButton = new Button
 	        {
 		        Text = @"Сгенерировать стихотворение",
 		        Enabled = false,
 		        Dock = DockStyle.Fill
 	        };
-	        buttonGenerate.Click += ButtonGenerateClick;
-	        _setGenerateButtonEnabled = enabled => buttonGenerate.Enabled = enabled;
+	        _generateButton.Click += ButtonGenerateClick;
 
-	        return buttonGenerate;
+	        return _generateButton;
         }
 
         private RichTextBox CreatePoemTextBox()
         {
-	        var poemTextBox = new RichTextBox
+	        _poemTextBox = new RichTextBox
 	        {
 		        Dock = DockStyle.Fill
 	        };
-	        _updatePoemTextBox = poem => poemTextBox.Text = poem;
 
-	        return poemTextBox;
+	        return _poemTextBox;
         }
 
-        private Label CreateSituationLabel(string text)
+        private SafeSituationGroupBox CreateSituationGroupBox()
         {
-	        var label = new Label
+	        _safeSituationGroupBox = new SafeSituationGroupBox
 	        {
-		        Text = text,
 		        Dock = DockStyle.Fill
 	        };
 
-	        return label;
-        }
-
-        private ComboBox CreateSiatuationComboBox(out Action<IEnumerable<IReadOnlyNode>> updateSourceAction,
-	        out Func<IReadOnlyNode> getSelectedItemFunc)
-        {
-	        var comboBox = new ComboBox
-	        {
-		        Dock = DockStyle.Fill,
-		        DisplayMember = "Name"
-	        };
-	        updateSourceAction = nodes => comboBox.DataSource = nodes.ToList();
-	        getSelectedItemFunc = () => (IReadOnlyNode) comboBox.SelectedItem;
-
-	        return comboBox;
-        }
-
-        private TableLayoutPanel CreateSituationElement(string name,
-	        out Action<IEnumerable<IReadOnlyNode>> updateSourceAction, out Func<IReadOnlyNode> getSelectedItemFunc)
-        {
-	        var labelObject = CreateSituationLabel(name);
-	        var objectComboBox = CreateSiatuationComboBox(out updateSourceAction, out getSelectedItemFunc);
-
-	        var table = new TableLayoutPanel
-	        {
-		        Dock = DockStyle.Fill
-	        };
-	        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-	        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-	        table.Controls.Add(labelObject, 0, 0);
-	        table.Controls.Add(objectComboBox, 0, 1);
-
-	        return table;
-        }
-
-        private GroupBox CreateSituationGroupBox()
-        {
-			var objectElement = CreateSituationElement("Предмет", out _updateObjectComboBox, out _getSelectedObject);
-			var actionElement = CreateSituationElement("Действие", out _updateActionComboBox, out _getSelectedAction);
-			var locativeElement = CreateSituationElement("Локатив", out _updateLocativeComboBox, out _getSelectedLocative);
-
-			var table = new TableLayoutPanel
-	        {
-				Dock = DockStyle.Fill
-	        };
-	        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-
-	        table.Controls.Add(objectElement, 0, 0);
-	        table.Controls.Add(actionElement, 1, 0);
-	        table.Controls.Add(locativeElement, 2, 0);
-
-	        var groupBox = new GroupBox
-	        {
-		        Dock = DockStyle.Fill,
-		        Text = @"Безопасная ситуация"
-	        };
-	        groupBox.Controls.Add(table);
-
-	        return groupBox;
+	        return _safeSituationGroupBox;
         }
 
         private void InitializeForm()
@@ -168,8 +93,8 @@ namespace PoemGenerator.App
 				Dock = DockStyle.Fill
 	        };
 	        table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
-	        table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 80));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
 	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
@@ -179,26 +104,17 @@ namespace PoemGenerator.App
 
 	        Controls.Add(table);
         }
-        
-        private void FillComboBoxes()
-        {
-	        var safeSituationNode = _generator.Ontology.Nodes.Get("безопасная ситуация");
-	        var safeSituationDotNode = safeSituationNode.ToIsA().FirstOrDefault();
-	        _updateObjectComboBox(safeSituationDotNode.ToIsANestedFromObject());
-	        _updateActionComboBox(safeSituationDotNode.ToIsANestedFromAction());
-	        _updateLocativeComboBox(safeSituationDotNode.ToIsANestedFromLocative());
-        }
 
 		private void ButtonGenerateClick(object sender, EventArgs e)
 		{
 			var child = _generator.GenerateChild();
 			
 			var builder = new StringBuilder();
-			builder.Append($"{child} {_getSelectedAction()} {_getSelectedObject()} {_getSelectedLocative()}");
+			builder.Append($"{child} {_safeSituationGroupBox.ActionSelectedItem} {_safeSituationGroupBox.ObjectSelectedItem} {_safeSituationGroupBox.LocativeSelectedItem}");
 			builder.Append(Environment.NewLine);
 			builder.Append($"{child} {_generator.GenerateDangerSituation()}");
 			
-			_updatePoemTextBox(builder.ToString());
+			_poemTextBox.Text = builder.ToString();
 		}
 
 		private void OpenOntologyClick(object sender, EventArgs e)
@@ -213,10 +129,10 @@ namespace PoemGenerator.App
                 {
                     var ontology = _ontolis.LoadByPath(openFileDialog.FileName);
                     _generator = new Generator(ontology);
-                    _setGenerateButtonEnabled(true);
-                    _enableEditOntologyMenuItem();
-                    FillComboBoxes();
-				}
+                    _generateButton.Enabled = true;
+                    _editOntologyMenuItem.Enabled = true;
+                    _safeSituationGroupBox.Generator = _generator;
+                }
             }
         }
 		
@@ -227,7 +143,7 @@ namespace PoemGenerator.App
 			Visible = true;
 			var ontology = _ontolis.Reload();
 			_generator = new Generator(ontology);
-			FillComboBoxes();
+			_safeSituationGroupBox.Generator = _generator;
 		}
 	}
 }

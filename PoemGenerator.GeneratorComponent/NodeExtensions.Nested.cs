@@ -55,5 +55,46 @@ namespace PoemGenerator.GeneratorComponent
         {
             return node.ToNestedFrom(Relations.IsA, relationName);
         }
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят по связи <see cref="Relations.Action"/> из всех нижележащих узов по вложенной входящей связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromIsANestedFromAction(this IReadOnlyNode node)
+        {
+            return node.FromNestedFrom(Relations.IsA, Relations.Action);
+        }
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят по связи <see cref="Relations.Object"/> из всех нижележащих узов по вложенной входящей связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromIsANestedFromObject(this IReadOnlyNode node)
+        {
+            return node.FromNestedFrom(Relations.IsA, Relations.Object);
+        }
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят по связи <see cref="Relations.Locative"/> из всех нижележащих узов по вложенной входящей связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromIsANestedFromLocative(this IReadOnlyNode node)
+        {
+            return node.FromNestedFrom(Relations.IsA, Relations.Locative);
+        }
+        
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые вложенно исходят по связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromIsANested(this IReadOnlyNode node)
+        {
+            return node.FromNested(Relations.IsA);
+        }
     }
 }

@@ -5,6 +5,8 @@
         public const string IsA = "is_a";
         
         public const string APartOf = "a_part_of";
+
+        public const string Has = "has";
         
         public const string Order = "order";
         

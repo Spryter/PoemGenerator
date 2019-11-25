@@ -83,6 +83,16 @@ namespace PoemGenerator.GeneratorComponent
         {
             return node.To(Relations.Agent);
         }
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые входят в указанный узел по связи <see cref="Relations.Has"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection ToHas(this IReadOnlyNode node)
+        {
+            return node.To(Relations.Has);
+        }
 
         /// <summary>
         /// Возвращает коллекцию узлов, которые исходят из указанного узла по связи <see cref="Relations.APartOf"/>.
@@ -162,6 +172,16 @@ namespace PoemGenerator.GeneratorComponent
         public static IReadOnlyNodeCollection FromAgent(this IReadOnlyNode node)
         {
             return node.From(Relations.Agent);
+        }
+        
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят из указанного узла по связи <see cref="Relations.Has"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromHas(this IReadOnlyNode node)
+        {
+            return node.From(Relations.Has);
         }
     }
 }

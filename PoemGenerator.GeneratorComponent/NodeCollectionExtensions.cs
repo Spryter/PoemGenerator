@@ -33,6 +33,11 @@ namespace PoemGenerator.GeneratorComponent
             return list[index];
         }
         
+        /// <summary> 
+        /// Создает <see cref="T:IReadOnlyNodeCollection"/> из <see cref="T:System.Collections.Generic.IEnumerable`1" />
+        /// </summary>
+        /// <param name="nodes"></param>
+        /// <returns>Коллекция узлов</returns>
         public static IReadOnlyNodeCollection ToNodeCollection(this IEnumerable<IReadOnlyNode> nodes)
         {
             return new NodeCollection(nodes);

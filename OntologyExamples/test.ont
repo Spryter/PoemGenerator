@@ -14,7 +14,7 @@
             },
             "id": "72",
             "name": ".",
-            "position_x": 1551,
+            "position_x": 1687,
             "position_y": 550
         },
         {
@@ -22,7 +22,7 @@
             },
             "id": "74",
             "name": "опасная ситуация",
-            "position_x": 1089,
+            "position_x": 1225,
             "position_y": 257
         },
         {
@@ -30,7 +30,7 @@
             },
             "id": "77",
             "name": "ребенок",
-            "position_x": 1732,
+            "position_x": 1868,
             "position_y": 351
         },
         {
@@ -38,7 +38,7 @@
             },
             "id": "78",
             "name": "мальчик",
-            "position_x": 1624,
+            "position_x": 1760,
             "position_y": 507
         },
         {
@@ -46,7 +46,7 @@
             },
             "id": "79",
             "name": "девочка",
-            "position_x": 1807,
+            "position_x": 1943,
             "position_y": 519
         },
         {
@@ -54,7 +54,7 @@
             },
             "id": "86",
             "name": "пальчики",
-            "position_x": 1764,
+            "position_x": 1900,
             "position_y": 780
         },
         {
@@ -62,15 +62,15 @@
             },
             "id": "90",
             "name": "розетка",
-            "position_x": 1616,
+            "position_x": 1752,
             "position_y": 796
         },
         {
             "attributes": {
             },
             "id": "110",
-            "name": ".",
-            "position_x": 1484,
+            "name": "*",
+            "position_x": 1620,
             "position_y": 450
         },
         {
@@ -78,7 +78,7 @@
             },
             "id": "113",
             "name": "безопасный предмет",
-            "position_x": 1457,
+            "position_x": 1593,
             "position_y": 354
         },
         {
@@ -86,7 +86,7 @@
             },
             "id": "116",
             "name": "опасное действие",
-            "position_x": 1229,
+            "position_x": 1365,
             "position_y": 467
         },
         {
@@ -94,7 +94,7 @@
             },
             "id": "118",
             "name": "опасный локатив",
-            "position_x": 1250,
+            "position_x": 1386,
             "position_y": 565
         },
         {
@@ -102,7 +102,7 @@
             },
             "id": "125",
             "name": "ситуация",
-            "position_x": 879,
+            "position_x": 1015,
             "position_y": 200
         },
         {
@@ -110,15 +110,15 @@
             },
             "id": "127",
             "name": "безопасная ситуация",
-            "position_x": 446,
+            "position_x": 582,
             "position_y": 295
         },
         {
             "attributes": {
             },
             "id": "129",
-            "name": ".",
-            "position_x": 865,
+            "name": "*",
+            "position_x": 1001,
             "position_y": 436
         },
         {
@@ -126,7 +126,7 @@
             },
             "id": "131",
             "name": "опасный предмет",
-            "position_x": 705,
+            "position_x": 841,
             "position_y": 357
         },
         {
@@ -134,7 +134,7 @@
             },
             "id": "133",
             "name": "безопасное действие",
-            "position_x": 999,
+            "position_x": 1135,
             "position_y": 460
         },
         {
@@ -142,7 +142,7 @@
             },
             "id": "135",
             "name": "безопасный локатив",
-            "position_x": 513,
+            "position_x": 649,
             "position_y": 459
         },
         {
@@ -150,7 +150,7 @@
             },
             "id": "141",
             "name": "человек",
-            "position_x": 1769,
+            "position_x": 1905,
             "position_y": 203
         },
         {
@@ -158,7 +158,7 @@
             },
             "id": "143",
             "name": "взрослый",
-            "position_x": 1821,
+            "position_x": 1957,
             "position_y": 351
         },
         {
@@ -166,7 +166,7 @@
             },
             "id": "70",
             "name": "сунуть",
-            "position_x": 1219,
+            "position_x": 1355,
             "position_y": 688
         },
         {
@@ -174,7 +174,7 @@
             },
             "id": "147",
             "name": ".",
-            "position_x": 1377,
+            "position_x": 1513,
             "position_y": 736
         },
         {
@@ -182,7 +182,7 @@
             },
             "id": "149",
             "name": "вилочка",
-            "position_x": 959,
+            "position_x": 1095,
             "position_y": 923
         },
         {
@@ -190,7 +190,7 @@
             },
             "id": "151",
             "name": ".",
-            "position_x": 984,
+            "position_x": 1120,
             "position_y": 620
         },
         {
@@ -198,7 +198,7 @@
             },
             "id": "153",
             "name": "найти",
-            "position_x": 1078,
+            "position_x": 1214,
             "position_y": 701
         },
         {
@@ -206,7 +206,7 @@
             },
             "id": "155",
             "name": "пулемет",
-            "position_x": 883,
+            "position_x": 1019,
             "position_y": 752
         },
         {
@@ -214,7 +214,7 @@
             },
             "id": "157",
             "name": ".",
-            "position_x": 645,
+            "position_x": 781,
             "position_y": 574
         },
         {
@@ -222,7 +222,7 @@
             },
             "id": "160",
             "name": "тигр",
-            "position_x": 776,
+            "position_x": 912,
             "position_y": 775
         },
         {
@@ -230,7 +230,7 @@
             },
             "id": "162",
             "name": "кормить",
-            "position_x": 561,
+            "position_x": 697,
             "position_y": 681
         },
         {
@@ -238,15 +238,15 @@
             },
             "id": "164",
             "name": "цирк",
-            "position_x": 643,
+            "position_x": 779,
             "position_y": 775
         },
         {
             "attributes": {
             },
             "id": "168",
-            "name": ".",
-            "position_x": 343,
+            "name": "*",
+            "position_x": 479,
             "position_y": 438
         },
         {
@@ -254,7 +254,7 @@
             },
             "id": "170",
             "name": "безопасный локатив",
-            "position_x": 200,
+            "position_x": 336,
             "position_y": 589
         },
         {
@@ -262,7 +262,7 @@
             },
             "id": "171",
             "name": "безопасный предмет",
-            "position_x": 396,
+            "position_x": 532,
             "position_y": 659
         },
         {
@@ -270,7 +270,7 @@
             },
             "id": "172",
             "name": "безопасное действие",
-            "position_x": 435,
+            "position_x": 571,
             "position_y": 579
         },
         {
@@ -278,7 +278,7 @@
             },
             "id": "176",
             "name": ".",
-            "position_x": 358,
+            "position_x": 494,
             "position_y": 788
         },
         {
@@ -286,7 +286,7 @@
             },
             "id": "180",
             "name": "дома",
-            "position_x": 121,
+            "position_x": 257,
             "position_y": 740
         },
         {
@@ -294,7 +294,7 @@
             },
             "id": "182",
             "name": ".",
-            "position_x": 277,
+            "position_x": 413,
             "position_y": 896
         },
         {
@@ -302,7 +302,7 @@
             },
             "id": "184",
             "name": "ручка",
-            "position_x": 606,
+            "position_x": 742,
             "position_y": 889
         },
         {
@@ -310,7 +310,7 @@
             },
             "id": "189",
             "name": ".",
-            "position_x": 399,
+            "position_x": 535,
             "position_y": 947
         },
         {
@@ -318,7 +318,7 @@
             },
             "id": "191",
             "name": "открыть",
-            "position_x": 530,
+            "position_x": 666,
             "position_y": 947
         },
         {
@@ -326,7 +326,7 @@
             },
             "id": "193",
             "name": "шкаф",
-            "position_x": 270,
+            "position_x": 406,
             "position_y": 960
         },
         {
@@ -334,7 +334,7 @@
             },
             "id": "195",
             "name": "кладовка",
-            "position_x": 635,
+            "position_x": 771,
             "position_y": 986
         },
         {
@@ -342,7 +342,7 @@
             },
             "id": "196",
             "name": ".",
-            "position_x": 435,
+            "position_x": 571,
             "position_y": 1002
         },
         {
@@ -350,7 +350,7 @@
             },
             "id": "199",
             "name": ".",
-            "position_x": 1524,
+            "position_x": 1660,
             "position_y": 939
         },
         {
@@ -358,7 +358,7 @@
             },
             "id": "201",
             "name": "нога",
-            "position_x": 1680,
+            "position_x": 1816,
             "position_y": 963
         },
         {
@@ -366,7 +366,7 @@
             },
             "id": "203",
             "name": ".",
-            "position_x": 1357,
+            "position_x": 1493,
             "position_y": 959
         },
         {
@@ -374,7 +374,7 @@
             },
             "id": "205",
             "name": "колодец",
-            "position_x": 1156,
+            "position_x": 1292,
             "position_y": 941
         },
         {
@@ -382,7 +382,7 @@
             },
             "id": "208",
             "name": "кинуть",
-            "position_x": 1467,
+            "position_x": 1603,
             "position_y": 981
         },
         {
@@ -390,7 +390,7 @@
             },
             "id": "216",
             "name": "пальчики",
-            "position_x": 1564,
+            "position_x": 1700,
             "position_y": 273
         },
         {
@@ -398,7 +398,7 @@
             },
             "id": "219",
             "name": "розетка",
-            "position_x": 64,
+            "position_x": 200,
             "position_y": 862
         }
     ],
