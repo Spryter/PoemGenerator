@@ -113,7 +113,7 @@ namespace PoemGenerator.GeneratorComponent
         /// <returns>Коллекция узлов.</returns>
         public static IReadOnlyNodeCollection FromNestedTo(this IReadOnlyNode node, string relationNameFrom, string relationNameTo)
         {
-            return new NodeCollection(node.FromNested(relationNameFrom).SelectMany(x => x.From(relationNameTo)));
+            return new NodeCollection(node.FromNested(relationNameFrom).SelectMany(x => x.To(relationNameTo)));
         }
     }
 }
