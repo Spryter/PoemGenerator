@@ -1,5 +1,5 @@
 {
-    "last_id": "232",
+    "last_id": "320",
     "namespaces": {
         "default": "http://knova.ru/user/1571847376741",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -14,8 +14,8 @@
             },
             "id": "72",
             "name": ".",
-            "position_x": 1687,
-            "position_y": 550
+            "position_x": 1658,
+            "position_y": 559
         },
         {
             "attributes": {
@@ -54,32 +54,32 @@
             },
             "id": "86",
             "name": "пальчики",
-            "position_x": 1900,
-            "position_y": 780
+            "position_x": 1896,
+            "position_y": 766
         },
         {
             "attributes": {
             },
             "id": "90",
             "name": "розетка",
-            "position_x": 1752,
-            "position_y": 796
+            "position_x": 1792,
+            "position_y": 609
         },
         {
             "attributes": {
             },
             "id": "110",
             "name": "*",
-            "position_x": 1620,
-            "position_y": 450
+            "position_x": 1619,
+            "position_y": 449
         },
         {
             "attributes": {
             },
             "id": "113",
             "name": "безопасный предмет",
-            "position_x": 1593,
-            "position_y": 354
+            "position_x": 1608,
+            "position_y": 356
         },
         {
             "attributes": {
@@ -126,24 +126,24 @@
             },
             "id": "131",
             "name": "опасный предмет",
-            "position_x": 841,
-            "position_y": 357
+            "position_x": 870,
+            "position_y": 345
         },
         {
             "attributes": {
             },
             "id": "133",
             "name": "безопасное действие",
-            "position_x": 1135,
-            "position_y": 460
+            "position_x": 1123,
+            "position_y": 443
         },
         {
             "attributes": {
             },
             "id": "135",
             "name": "безопасный локатив",
-            "position_x": 649,
-            "position_y": 459
+            "position_x": 677,
+            "position_y": 446
         },
         {
             "attributes": {
@@ -166,24 +166,24 @@
             },
             "id": "70",
             "name": "сунуть",
-            "position_x": 1355,
-            "position_y": 688
+            "position_x": 1720,
+            "position_y": 683
         },
         {
             "attributes": {
             },
             "id": "147",
             "name": ".",
-            "position_x": 1513,
-            "position_y": 736
+            "position_x": 1635,
+            "position_y": 725
         },
         {
             "attributes": {
             },
             "id": "149",
             "name": "вилочка",
-            "position_x": 1095,
-            "position_y": 923
+            "position_x": 1157,
+            "position_y": 872
         },
         {
             "attributes": {
@@ -198,8 +198,8 @@
             },
             "id": "153",
             "name": "найти",
-            "position_x": 1214,
-            "position_y": 701
+            "position_x": 1213,
+            "position_y": 747
         },
         {
             "attributes": {
@@ -222,8 +222,8 @@
             },
             "id": "160",
             "name": "тигр",
-            "position_x": 912,
-            "position_y": 775
+            "position_x": 913,
+            "position_y": 747
         },
         {
             "attributes": {
@@ -238,192 +238,288 @@
             },
             "id": "164",
             "name": "цирк",
-            "position_x": 779,
-            "position_y": 775
+            "position_x": 795,
+            "position_y": 763
         },
         {
             "attributes": {
             },
             "id": "168",
             "name": "*",
-            "position_x": 479,
-            "position_y": 438
+            "position_x": 468,
+            "position_y": 440
         },
         {
             "attributes": {
             },
             "id": "170",
             "name": "безопасный локатив",
-            "position_x": 336,
-            "position_y": 589
+            "position_x": 277,
+            "position_y": 594
         },
         {
             "attributes": {
             },
             "id": "171",
             "name": "безопасный предмет",
-            "position_x": 532,
-            "position_y": 659
+            "position_x": 547,
+            "position_y": 606
         },
         {
             "attributes": {
             },
             "id": "172",
             "name": "безопасное действие",
-            "position_x": 571,
-            "position_y": 579
-        },
-        {
-            "attributes": {
-            },
-            "id": "176",
-            "name": ".",
-            "position_x": 491,
-            "position_y": 790
-        },
-        {
-            "attributes": {
-            },
-            "id": "180",
-            "name": "дома",
-            "position_x": 257,
-            "position_y": 740
-        },
-        {
-            "attributes": {
-            },
-            "id": "182",
-            "name": ".",
-            "position_x": 415,
-            "position_y": 891
-        },
-        {
-            "attributes": {
-            },
-            "id": "184",
-            "name": "ручка",
-            "position_x": 751,
-            "position_y": 904
-        },
-        {
-            "attributes": {
-            },
-            "id": "189",
-            "name": ".",
-            "position_x": 535,
-            "position_y": 942
-        },
-        {
-            "attributes": {
-            },
-            "id": "191",
-            "name": "открыть",
-            "position_x": 666,
-            "position_y": 947
-        },
-        {
-            "attributes": {
-            },
-            "id": "193",
-            "name": "шкаф",
-            "position_x": 384,
-            "position_y": 942
-        },
-        {
-            "attributes": {
-            },
-            "id": "195",
-            "name": "кладовка",
-            "position_x": 768,
-            "position_y": 1001
-        },
-        {
-            "attributes": {
-            },
-            "id": "196",
-            "name": ".",
-            "position_x": 602,
-            "position_y": 1012
-        },
-        {
-            "attributes": {
-            },
-            "id": "199",
-            "name": ".",
-            "position_x": 1660,
-            "position_y": 939
-        },
-        {
-            "attributes": {
-            },
-            "id": "201",
-            "name": "нога",
-            "position_x": 1816,
-            "position_y": 963
+            "position_x": 596,
+            "position_y": 525
         },
         {
             "attributes": {
             },
             "id": "203",
             "name": ".",
-            "position_x": 1493,
-            "position_y": 959
+            "position_x": 1522,
+            "position_y": 803
         },
         {
             "attributes": {
             },
             "id": "205",
             "name": "колодец",
-            "position_x": 1292,
-            "position_y": 941
+            "position_x": 1343,
+            "position_y": 951
         },
         {
             "attributes": {
             },
             "id": "208",
             "name": "кинуть",
-            "position_x": 1603,
-            "position_y": 981
+            "position_x": 1667,
+            "position_y": 950
         },
         {
             "attributes": {
             },
             "id": "216",
             "name": "пальчики",
-            "position_x": 1700,
+            "position_x": 1657,
             "position_y": 273
         },
         {
             "attributes": {
             },
-            "id": "219",
-            "name": "розетка",
-            "position_x": 200,
-            "position_y": 862
-        },
-        {
-            "attributes": {
-            },
-            "id": "225",
+            "id": "233",
             "name": ".",
-            "position_x": 427,
-            "position_y": 1011
+            "position_x": -104,
+            "position_y": 655
         },
         {
             "attributes": {
             },
-            "id": "227",
+            "id": "235",
+            "name": "дома",
+            "position_x": -231,
+            "position_y": 636
+        },
+        {
+            "attributes": {
+            },
+            "id": "237",
+            "name": "есть",
+            "position_x": 19,
+            "position_y": 643
+        },
+        {
+            "attributes": {
+            },
+            "id": "240",
+            "name": ".",
+            "position_x": -112,
+            "position_y": 788
+        },
+        {
+            "attributes": {
+            },
+            "id": "242",
+            "name": "растить",
+            "position_x": -8,
+            "position_y": 811
+        },
+        {
+            "attributes": {
+            },
+            "id": "245",
             "name": "дача",
-            "position_x": 257,
-            "position_y": 986
+            "position_x": -242,
+            "position_y": 783
         },
         {
             "attributes": {
             },
-            "id": "231",
-            "name": "распилить",
-            "position_x": 593,
-            "position_y": 1067
+            "id": "247",
+            "name": "капуста",
+            "position_x": 15,
+            "position_y": 720
+        },
+        {
+            "attributes": {
+            },
+            "id": "250",
+            "name": "поле",
+            "position_x": -250,
+            "position_y": 919
+        },
+        {
+            "attributes": {
+            },
+            "id": "251",
+            "name": ".",
+            "position_x": -123,
+            "position_y": 927
+        },
+        {
+            "attributes": {
+            },
+            "id": "254",
+            "name": ".",
+            "position_x": 509,
+            "position_y": 784
+        },
+        {
+            "attributes": {
+            },
+            "id": "255",
+            "name": "дома",
+            "position_x": 687,
+            "position_y": 760
+        },
+        {
+            "attributes": {
+            },
+            "id": "259",
+            "name": ".",
+            "position_x": 659,
+            "position_y": 849
+        },
+        {
+            "attributes": {
+            },
+            "id": "263",
+            "name": "ручка",
+            "position_x": 1088,
+            "position_y": 951
+        },
+        {
+            "attributes": {
+            },
+            "id": "272",
+            "name": ".",
+            "position_x": 469,
+            "position_y": 935
+        },
+        {
+            "attributes": {
+            },
+            "id": "278",
+            "name": "потерять",
+            "position_x": 319,
+            "position_y": 962
+        },
+        {
+            "attributes": {
+            },
+            "id": "280",
+            "name": ".",
+            "position_x": 567,
+            "position_y": 978
+        },
+        {
+            "attributes": {
+            },
+            "id": "281",
+            "name": "кладовка",
+            "position_x": 880,
+            "position_y": 1060
+        },
+        {
+            "attributes": {
+            },
+            "id": "284",
+            "name": "открыть",
+            "position_x": 379,
+            "position_y": 1058
+        },
+        {
+            "attributes": {
+            },
+            "id": "289",
+            "name": "дача",
+            "position_x": 618,
+            "position_y": 679
+        },
+        {
+            "attributes": {
+            },
+            "id": "291",
+            "name": ".",
+            "position_x": 353,
+            "position_y": 782
+        },
+        {
+            "attributes": {
+            },
+            "id": "292",
+            "name": "капуста",
+            "position_x": 329,
+            "position_y": 915
+        },
+        {
+            "attributes": {
+            },
+            "id": "296",
+            "name": "растить",
+            "position_x": 209,
+            "position_y": 867
+        },
+        {
+            "attributes": {
+            },
+            "id": "298",
+            "name": ".",
+            "position_x": 478,
+            "position_y": 675
+        },
+        {
+            "attributes": {
+            },
+            "id": "305",
+            "name": ".",
+            "position_x": 186,
+            "position_y": 811
+        },
+        {
+            "attributes": {
+            },
+            "id": "307",
+            "name": "есть",
+            "position_x": 73,
+            "position_y": 771
+        },
+        {
+            "attributes": {
+            },
+            "id": "309",
+            "name": ".",
+            "position_x": 92,
+            "position_y": 950
+        },
+        {
+            "attributes": {
+            },
+            "id": "315",
+            "name": "пирог",
+            "position_x": 202,
+            "position_y": 1059
         }
     ],
     "relations": [
@@ -442,14 +538,6 @@
             "id": "81",
             "name": "is_a",
             "source_node_id": "79"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "86",
-            "id": "92",
-            "name": "object",
-            "source_node_id": "72"
         },
         {
             "attributes": {
@@ -590,14 +678,6 @@
         {
             "attributes": {
             },
-            "destination_node_id": "149",
-            "id": "150",
-            "name": "object",
-            "source_node_id": "147"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "129",
             "id": "152",
             "name": "is_a",
@@ -686,118 +766,6 @@
         {
             "attributes": {
             },
-            "destination_node_id": "168",
-            "id": "177",
-            "name": "is_a",
-            "source_node_id": "176"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "149",
-            "id": "178",
-            "name": "object",
-            "source_node_id": "176"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "153",
-            "id": "179",
-            "name": "action",
-            "source_node_id": "176"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "180",
-            "id": "181",
-            "name": "locative",
-            "source_node_id": "176"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "176",
-            "id": "183",
-            "name": "is_a",
-            "source_node_id": "182"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "184",
-            "id": "185",
-            "name": "object",
-            "source_node_id": "182"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "176",
-            "id": "190",
-            "name": "is_a",
-            "source_node_id": "189"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "191",
-            "id": "192",
-            "name": "action",
-            "source_node_id": "189"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "193",
-            "id": "194",
-            "name": "object",
-            "source_node_id": "189"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "189",
-            "id": "197",
-            "name": "is_a",
-            "source_node_id": "196"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "195",
-            "id": "198",
-            "name": "object",
-            "source_node_id": "196"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "147",
-            "id": "200",
-            "name": "is_a",
-            "source_node_id": "199"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "201",
-            "id": "202",
-            "name": "locative",
-            "source_node_id": "199"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "147",
-            "id": "204",
-            "name": "is_a",
-            "source_node_id": "203"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "205",
             "id": "207",
             "name": "locative",
@@ -810,22 +778,6 @@
             "id": "209",
             "name": "action",
             "source_node_id": "203"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "171",
-            "id": "210",
-            "name": "is_a",
-            "source_node_id": "184"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "171",
-            "id": "211",
-            "name": "is_a",
-            "source_node_id": "195"
         },
         {
             "attributes": {
@@ -862,42 +814,346 @@
         {
             "attributes": {
             },
-            "destination_node_id": "219",
-            "id": "220",
-            "name": "",
-            "source_node_id": "219"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "180",
-            "id": "222",
-            "name": "a_part_of",
-            "source_node_id": "219"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "227",
-            "id": "229",
+            "destination_node_id": "235",
+            "id": "236",
             "name": "locative",
-            "source_node_id": "225"
+            "source_node_id": "233"
         },
         {
             "attributes": {
             },
-            "destination_node_id": "189",
-            "id": "230",
-            "name": "is_a",
-            "source_node_id": "225"
+            "destination_node_id": "237",
+            "id": "238",
+            "name": "",
+            "source_node_id": "237"
         },
         {
             "attributes": {
             },
-            "destination_node_id": "231",
-            "id": "232",
+            "destination_node_id": "237",
+            "id": "239",
             "name": "action",
-            "source_node_id": "225"
+            "source_node_id": "233"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "233",
+            "id": "241",
+            "name": "is_a",
+            "source_node_id": "240"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "242",
+            "id": "243",
+            "name": "action",
+            "source_node_id": "240"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "245",
+            "id": "246",
+            "name": "locative",
+            "source_node_id": "240"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "247",
+            "id": "248",
+            "name": "object",
+            "source_node_id": "233"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "242",
+            "id": "249",
+            "name": "",
+            "source_node_id": "242"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "240",
+            "id": "252",
+            "name": "is_a",
+            "source_node_id": "251"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "250",
+            "id": "253",
+            "name": "locative",
+            "source_node_id": "251"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "255",
+            "id": "257",
+            "name": "",
+            "source_node_id": "255"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "255",
+            "id": "258",
+            "name": "locative",
+            "source_node_id": "254"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "254",
+            "id": "261",
+            "name": "is_a",
+            "source_node_id": "259"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "263",
+            "id": "264",
+            "name": "",
+            "source_node_id": "263"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "263",
+            "id": "265",
+            "name": "object",
+            "source_node_id": "259"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "153",
+            "id": "274",
+            "name": "action",
+            "source_node_id": "259"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "149",
+            "id": "276",
+            "name": "object",
+            "source_node_id": "259"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "254",
+            "id": "277",
+            "name": "is_a",
+            "source_node_id": "272"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "278",
+            "id": "279",
+            "name": "action",
+            "source_node_id": "272"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "281",
+            "id": "282",
+            "name": "object",
+            "source_node_id": "259"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "254",
+            "id": "283",
+            "name": "is_a",
+            "source_node_id": "280"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "284",
+            "id": "285",
+            "name": "action",
+            "source_node_id": "280"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "281",
+            "id": "286",
+            "name": "object",
+            "source_node_id": "280"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "263",
+            "id": "287",
+            "name": "object",
+            "source_node_id": "272"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "149",
+            "id": "288",
+            "name": "object",
+            "source_node_id": "272"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "291",
+            "id": "293",
+            "name": "",
+            "source_node_id": "291"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "291",
+            "id": "294",
+            "name": "",
+            "source_node_id": "291"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "292",
+            "id": "295",
+            "name": "object",
+            "source_node_id": "291"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "296",
+            "id": "297",
+            "name": "action",
+            "source_node_id": "291"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "168",
+            "id": "301",
+            "name": "is_a",
+            "source_node_id": "298"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "289",
+            "id": "302",
+            "name": "locative",
+            "source_node_id": "298"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "298",
+            "id": "303",
+            "name": "is_a",
+            "source_node_id": "254"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "298",
+            "id": "304",
+            "name": "is_a",
+            "source_node_id": "291"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "168",
+            "id": "306",
+            "name": "is_a",
+            "source_node_id": "305"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "307",
+            "id": "308",
+            "name": "action",
+            "source_node_id": "305"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "305",
+            "id": "310",
+            "name": "is_a",
+            "source_node_id": "309"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "255",
+            "id": "312",
+            "name": "locative",
+            "source_node_id": "309"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "292",
+            "id": "314",
+            "name": "object",
+            "source_node_id": "309"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "315",
+            "id": "316",
+            "name": "object",
+            "source_node_id": "309"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "149",
+            "id": "317",
+            "name": "object",
+            "source_node_id": "147"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "86",
+            "id": "318",
+            "name": "object",
+            "source_node_id": "147"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "110",
+            "id": "319",
+            "name": "is_a",
+            "source_node_id": "203"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "149",
+            "id": "320",
+            "name": "object",
+            "source_node_id": "203"
         }
     ],
     "visualize_ont_path": ""
