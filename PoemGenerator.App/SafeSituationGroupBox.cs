@@ -10,99 +10,41 @@ namespace PoemGenerator.App
 {
     public partial class SafeSituationGroupBox : UserControl
     {
-        private const string MainFrameNodeName = "*";
-        
         private const string EmptyNodeName = "пусто";
-        
+
         private const int EmptyNodeId = -1;
 
         private Generator _generator;
-        
+
         private ComboBox _object;
-        
+
         private ComboBox _action;
-        
+
         private ComboBox _locative;
+
+        private IEnumerable<IReadOnlyNode> _objectDataSource;
+
+        private IEnumerable<IReadOnlyNode> _actionDataSource;
+
+        private IEnumerable<IReadOnlyNode> _locativeDataSource;
 
         private IEnumerable<IReadOnlyNode> ObjectDataSource
         {
-            get => (IEnumerable<IReadOnlyNode>)_object.DataSource;
-            set => _object.DataSource = new [] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            get => ((IEnumerable<IReadOnlyNode>)_object.DataSource).Skip(1);
+            set => _object.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
 
         private IEnumerable<IReadOnlyNode> ActionDataSource
         {
-            get => (IEnumerable<IReadOnlyNode>)_action.DataSource;
-            set => _action.DataSource = new [] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            get => ((IEnumerable<IReadOnlyNode>)_action.DataSource).Skip(1);
+            set => _action.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
 
         private IEnumerable<IReadOnlyNode> LocativeDataSource
         {
-            get => (IEnumerable<IReadOnlyNode>)_locative.DataSource;
-            set => _locative.DataSource = new [] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            get => ((IEnumerable<IReadOnlyNode>)_locative.DataSource).Skip(1);
+            set => _locative.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
-
-        public IReadOnlyNode ObjectSelectedItem => ((IReadOnlyNode) _object.SelectedItem).Name == EmptyNodeName
-            ? GetSelected(Relations.Object, ObjectDataSource, ref _objectIsSelected)
-            : (IReadOnlyNode) _object.SelectedItem;
-
-        public IReadOnlyNode ActionSelectedItem => ((IReadOnlyNode) _action.SelectedItem).Name == EmptyNodeName
-            ? GetSelected(Relations.Action, ActionDataSource, ref _actionIsSelected)
-            : (IReadOnlyNode) _action.SelectedItem;
-
-        public IReadOnlyNode LocativeSelectedItem => ((IReadOnlyNode) _locative.SelectedItem).Name == EmptyNodeName
-            ? GetSelected(Relations.Locative, LocativeDataSource, ref _locativeIsSelected)
-            : (IReadOnlyNode) _locative.SelectedItem;
-
-        #region Обвес для генерации, если все пусто
-        
-        /*
-         * То что снизу это просто полная дичь, мне стыдно за этот код.
-         *
-         * По хорошему надо прегенерить значения для незаполненных комбобоксов,
-         * тогда можно будет избежать кучи ненужных полей и использование ref.
-        */
-        
-        private bool _actionIsSelected;
-
-        private bool _objectIsSelected;
-
-        private bool _locativeIsSelected;
-
-        private IReadOnlyNode _frameNode;
-
-        private bool IsEmpty =>
-            ((IReadOnlyNode) _object.SelectedItem).Name == EmptyNodeName &&
-            ((IReadOnlyNode) _action.SelectedItem).Name == EmptyNodeName &&
-            ((IReadOnlyNode) _locative.SelectedItem).Name == EmptyNodeName;
-        
-        private IReadOnlyNode GetSelected(string relationName, IEnumerable<IReadOnlyNode> nodes, ref bool isSelected)
-        {
-            if (!IsEmpty)
-                return nodes.Skip(1).ToNodeCollection().GetRandom();
-
-            if (_frameNode == null)
-            {
-                _frameNode = GetSafeSituationFrameNode(nodes.Skip(1).ToNodeCollection().GetRandom());
-            }
-
-            isSelected = true;
-            var result = GetRelevantNodes(_frameNode, relationName)
-                .ToNodeCollection()
-                .GetRandom();
-            
-            if (_actionIsSelected && _objectIsSelected && _locativeIsSelected)
-            {
-                _actionIsSelected = false;
-                _objectIsSelected = false;
-                _locativeIsSelected = false;
-                _frameNode = null;
-            }
-
-            return result;
-        }
-
-        #endregion
         
         public Generator Generator
         {
@@ -110,7 +52,7 @@ namespace PoemGenerator.App
             set
             {
                 _generator = value;
-                FillComboBoxes();
+                UpdateDataSource();
             }
         }
 
@@ -138,7 +80,7 @@ namespace PoemGenerator.App
                 Dock = DockStyle.Fill,
                 DisplayMember = "Name"
             };
-            comboBox.SelectionChangeCommitted += UpdateComboBoxes;
+            comboBox.SelectionChangeCommitted += SelectedItemChanged;
 
             return comboBox;
         }
@@ -159,7 +101,7 @@ namespace PoemGenerator.App
 
             return table;
         }
-        
+
         private void InitializeGroupBox()
         {
             var actionElement = CreateSituationElement("Действие", out _action);
@@ -189,60 +131,145 @@ namespace PoemGenerator.App
             Controls.Add(groupBox);
         }
 
-        private void FillComboBoxes()
+        private void UpdateDataSource()
         {
-            var safeSituation = Generator.Ontology.Nodes.Get("безопасная ситуация").ToIsA();
-            ActionDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromAction());
-            ObjectDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromObject());
-            LocativeDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromLocative());
+            var safeSituation = _generator.Ontology.Nodes.Get(Nodes.SafeSituation).ToIsA();
+            _actionDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromAction()).ToNodeCollection();
+            _objectDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromObject()).ToNodeCollection();
+            _locativeDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromLocative()).ToNodeCollection();
+            ActionDataSource = _actionDataSource;
+            ObjectDataSource = _objectDataSource;
+            LocativeDataSource = _locativeDataSource;
         }
-
-        private static IReadOnlyNode GetSafeSituationFrameNode(IReadOnlyNode frameElementNode)
-        {
-            var objectRelation = frameElementNode.ToObject().FirstOrDefault(x => x.FromIsANested().Count(y => y.Name == "безопасная ситуация") > 0);
-            var actionRelation = frameElementNode.ToAction().FirstOrDefault(x => x.FromIsANested().Count(y => y.Name == "безопасная ситуация") > 0);
-            var locativeRelation = frameElementNode.ToLocative().FirstOrDefault(x => x.FromIsANested().Count(y => y.Name == "безопасная ситуация") > 0);
-
-            return objectRelation ?? actionRelation ?? locativeRelation;
-        }
-
-        private static IEnumerable<IReadOnlyNode> GetRelevantNodes(IReadOnlyNode node, string relationName)
-        {
-            return node
-                .From(relationName)
-                .Union(node
-                    .FromIsANested()
-                    .Where(x => x.Name != MainFrameNodeName)
-                    .SelectMany(x => x.From(relationName))
-                    .Union(node.ToIsANestedFrom(relationName)));
-        }
-
-        private void UpdateComboBoxes(object obj, EventArgs args)
+        
+        private void SelectedItemChanged(object obj, EventArgs args)
         {
             var actionSelectedItem = (IReadOnlyNode)_action.SelectedItem;
             var objectSelectedItem = (IReadOnlyNode)_object.SelectedItem;
             var locativeSelectedItem = (IReadOnlyNode)_locative.SelectedItem;
 
-            var mainNode = actionSelectedItem != null && actionSelectedItem.Name != EmptyNodeName ? actionSelectedItem :
-                objectSelectedItem != null && objectSelectedItem.Name != EmptyNodeName ? objectSelectedItem :
-                locativeSelectedItem != null && locativeSelectedItem.Name != EmptyNodeName ? locativeSelectedItem :
-                new Node(EmptyNodeId, EmptyNodeName);
+            UpdateDataSource();
 
-            var frameNode = GetSafeSituationFrameNode(mainNode);
-            
-            if (frameNode != null)
+            if (actionSelectedItem.Name != EmptyNodeName)
             {
-                ActionDataSource = GetRelevantNodes(frameNode, Relations.Action);
-                ObjectDataSource = GetRelevantNodes(frameNode, Relations.Object);
-                LocativeDataSource = GetRelevantNodes(frameNode, Relations.Locative);
+                ObjectDataSource = _objectDataSource
+                    .Intersect(GetRelevant(actionSelectedItem, Relations.Action, Relations.Object))
+                    .ToNodeCollection();
+                _objectDataSource = ObjectDataSource;
+                LocativeDataSource = _locativeDataSource
+                    .Intersect(GetRelevant(actionSelectedItem, Relations.Action, Relations.Locative))
+                    .ToNodeCollection();
+                _locativeDataSource = LocativeDataSource;
+            }
+
+            if (objectSelectedItem.Name != EmptyNodeName)
+            {
+                ActionDataSource = _actionDataSource
+                    .Intersect(GetRelevant(objectSelectedItem, Relations.Object, Relations.Action))
+                    .ToNodeCollection();
+                _actionDataSource = ActionDataSource;
+                LocativeDataSource = _locativeDataSource
+                    .Intersect(GetRelevant(objectSelectedItem, Relations.Object, Relations.Locative))
+                    .ToNodeCollection();
+                _locativeDataSource = LocativeDataSource;
+            }
+
+            if (locativeSelectedItem.Name != EmptyNodeName)
+            {
+                ActionDataSource = _actionDataSource
+                    .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Action))
+                    .ToNodeCollection();
+                _actionDataSource = ActionDataSource;
+                ObjectDataSource = _objectDataSource
+                    .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Object))
+                    .ToNodeCollection();
+                _objectDataSource = ObjectDataSource;
+            }
+
+            if (actionSelectedItem.Name != EmptyNodeName)
+            {
                 _action.SelectedItem = actionSelectedItem;
+            }
+
+            if (objectSelectedItem.Name != EmptyNodeName)
+            {
                 _object.SelectedItem = objectSelectedItem;
+            }
+
+            if (locativeSelectedItem.Name != EmptyNodeName)
+            {
                 _locative.SelectedItem = locativeSelectedItem;
+            }
+
+            _actionDataSource = ActionDataSource;
+            _objectDataSource = ObjectDataSource;
+            _locativeDataSource = LocativeDataSource;
+        }
+
+        /// <summary>
+        /// Возвращает множество узлов, которые подходят по иерархии с заданными связями
+        /// </summary>
+        /// <param name="node">Узел части фрейма.</param>
+        /// <param name="toRelation">Связь части фрейма.</param>
+        /// <param name="fromRelation">Узлы со связями которые надо найти.</param>
+        /// <returns>Множество узлов.</returns>
+        private static IEnumerable<IReadOnlyNode> GetRelevant(IReadOnlyNode node, string toRelation,
+            string fromRelation)
+        {
+            return node.To(toRelation)
+                .SelectMany(x => x.From(fromRelation))
+                .Union(node
+                    .To(toRelation)
+                    .SelectMany(x => x
+                        .ToIsANestedFrom(fromRelation)
+                        .Union(x
+                            .FromIsANested()
+                            .Where(y => y.Name != Nodes.MainFrameNode)
+                            .SelectMany(y => y.From(fromRelation))))
+                );
+        }
+
+        public Situation GetSituation()
+        {
+            var situation = new Situation();
+            var selectedAction = (IReadOnlyNode) _action.SelectedItem;
+            var selectedObject = (IReadOnlyNode) _object.SelectedItem;
+            var selectedLocative = (IReadOnlyNode) _locative.SelectedItem;
+
+            if (selectedAction.Name != EmptyNodeName)
+            {
+                situation.Action = selectedAction.Name;
             }
             else
             {
-                FillComboBoxes();
+                var actionItem = _actionDataSource.ToNodeCollection().GetRandom();
+                situation.Action = actionItem.Name;
+                _objectDataSource = _objectDataSource
+                    .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Object));
+                _locativeDataSource = _locativeDataSource
+                    .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Locative));
             }
+
+            if (selectedObject.Name != EmptyNodeName)
+            {
+                situation.Object = selectedObject.Name;
+            }
+            else
+            {
+                var objectItem = _objectDataSource.ToNodeCollection().GetRandom();
+                situation.Object = objectItem.Name;
+                _locativeDataSource = _locativeDataSource
+                    .Intersect(GetRelevant(objectItem, Relations.Object, Relations.Locative));
+            }
+
+            situation.Locative = selectedLocative.Name != EmptyNodeName
+                ? selectedLocative.Name
+                : _locativeDataSource.ToNodeCollection().GetRandom().Name;
+
+            _objectDataSource = ObjectDataSource;
+            _locativeDataSource = LocativeDataSource;
+
+            return situation;
         }
     }
 }

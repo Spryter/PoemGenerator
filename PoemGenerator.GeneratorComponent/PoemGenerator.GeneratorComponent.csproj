@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Nodes.cs" />
     <Compile Include="NodeCollectionExtensions.cs" />
     <Compile Include="NodeExtensions.cs" />
     <Compile Include="NodeExtensions.Nested.cs" />
