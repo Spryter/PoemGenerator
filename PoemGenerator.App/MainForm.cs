@@ -110,7 +110,8 @@ namespace PoemGenerator.App
 			var child = _generator.GenerateChild();
 			
 			var builder = new StringBuilder();
-			builder.Append($"{child} {_safeSituationGroupBox.ActionSelectedItem} {_safeSituationGroupBox.ObjectSelectedItem} {_safeSituationGroupBox.LocativeSelectedItem}");
+			var situation = _safeSituationGroupBox.GetSituation();
+			builder.Append($"{child} {situation.Action} {situation.Object} {situation.Locative}");
 			builder.Append(Environment.NewLine);
 			builder.Append($"{child} {_generator.GenerateDangerSituation()}");
 			

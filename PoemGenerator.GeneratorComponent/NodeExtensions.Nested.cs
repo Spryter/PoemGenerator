@@ -55,6 +55,17 @@ namespace PoemGenerator.GeneratorComponent
         {
             return node.ToNestedFrom(Relations.IsA, relationName);
         }
+
+        /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят по определенной связи из всех нижележащих узов по вложенной исходящей связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <param name="relationName">Наименование связи.</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection FromIsANestedFrom(this IReadOnlyNode node, string relationName)
+        {
+            return node.FromNestedFrom(Relations.IsA, relationName);
+        }
         
         /// <summary>
         /// Возвращает коллекцию узлов, которые исходят по связи <see cref="Relations.Action"/> из всех нижележащих узов по вложенной входящей связи <see cref="Relations.IsA"/>.
@@ -85,8 +96,7 @@ namespace PoemGenerator.GeneratorComponent
         {
             return node.FromNestedFrom(Relations.IsA, Relations.Locative);
         }
-        
-        
+
         /// <summary>
         /// Возвращает коллекцию узлов, которые вложенно исходят по связи <see cref="Relations.IsA"/>.
         /// </summary>
