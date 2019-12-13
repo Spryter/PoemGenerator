@@ -2,7 +2,7 @@
 
 namespace PoemGenerator.OntologyModel
 {
-    public class Relation: IReadOnlyRelation
+    public class OntologyRelation: IReadOnlyRelation
     {
         public string Name { get; }
         
@@ -10,7 +10,7 @@ namespace PoemGenerator.OntologyModel
         
         public IReadOnlyNode To { get; }
 
-        public Relation(string name, IReadOnlyNode from, IReadOnlyNode to)
+        public OntologyRelation(string name, IReadOnlyNode from, IReadOnlyNode to)
         {
             Name = name;
             From = from;

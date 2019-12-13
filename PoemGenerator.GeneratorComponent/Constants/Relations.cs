@@ -1,4 +1,4 @@
-﻿namespace PoemGenerator.GeneratorComponent
+﻿namespace PoemGenerator.GeneratorComponent.Constants
 {
     public static class Relations
     {

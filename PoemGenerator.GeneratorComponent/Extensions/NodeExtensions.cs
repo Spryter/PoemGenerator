@@ -4,7 +4,7 @@ using System.Linq;
 using PoemGenerator.OntologyModel.Abstractions;
 using PoemGenerator.OntologyModel.Collections;
 
-namespace PoemGenerator.GeneratorComponent
+namespace PoemGenerator.GeneratorComponent.Extensions
 {
     public static partial class NodeExtensions
     {

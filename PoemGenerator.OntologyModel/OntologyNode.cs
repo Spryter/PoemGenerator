@@ -1,13 +1,16 @@
-﻿using PoemGenerator.OntologyModel.Abstractions;
+﻿using Microsoft.Msagl.Core.Geometry;
+using PoemGenerator.OntologyModel.Abstractions;
 using PoemGenerator.OntologyModel.Collections;
 
 namespace PoemGenerator.OntologyModel
 {
-    public class Node: IReadOnlyNode
+    public class OntologyNode: IReadOnlyNode
     {
         public int Id { get; }
         
         public string Name { get; }
+        
+        public Point Position { get; }
 
         public IReadOnlyRelationCollection ToRelations => To;
         
@@ -17,10 +20,11 @@ namespace PoemGenerator.OntologyModel
 
         public RelationCollection From { get; }
         
-        public Node(int id, string name)
+        public OntologyNode(int id, string name, Point position = default)
         {
             Id = id;
             Name = name;
+            Position = position;
             To = new RelationCollection();
             From = new RelationCollection();
         }

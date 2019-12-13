@@ -1,6 +1,7 @@
-﻿using PoemGenerator.OntologyModel.Abstractions;
+﻿using PoemGenerator.GeneratorComponent.Constants;
+using PoemGenerator.OntologyModel.Abstractions;
 
-namespace PoemGenerator.GeneratorComponent
+namespace PoemGenerator.GeneratorComponent.Extensions
 {
     public static partial class NodeExtensions
     {

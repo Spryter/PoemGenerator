@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Msagl.Core.Geometry;
 using Newtonsoft.Json;
 using PoemGenerator.OntolisAdapter.Exceptions;
 using PoemGenerator.OntolisAdapter.JsonModel;
@@ -21,19 +23,24 @@ namespace PoemGenerator.OntolisAdapter
             _ontologyPath = path;
             
             var jsonOntology = JsonConvert.DeserializeObject<JsonOntology>(File.ReadAllText(path));
-            var nodes = new NodeCollection(jsonOntology.Nodes.Select(x => new Node(x.Id, x.Name)));
+            var nodes = new NodeCollection(jsonOntology.Nodes.Select(x =>
+                new OntologyNode(x.Id, x.Name, new Point(x.PositionX, x.PositionY))));
+            
+            var ontologyRelations = new List<OntologyRelation>();
             
             foreach (var jsonRelation in jsonOntology.Relations)
             {
-                var fromNode = (Node)nodes[jsonRelation.SourceNodeId];
-                var toNode = (Node)nodes[jsonRelation.DestinationNodeId];
+                var fromNode = (OntologyNode)nodes[jsonRelation.SourceNodeId];
+                var toNode = (OntologyNode)nodes[jsonRelation.DestinationNodeId];
                 
-                var relation = new Relation(jsonRelation.Name, fromNode, toNode);
+                var relation = new OntologyRelation(jsonRelation.Name, fromNode, toNode);
                 fromNode.From.Relations.Add(relation);
                 toNode.To.Relations.Add(relation);
+                ontologyRelations.Add(relation);
             }
-
-            return new Ontology(nodes);
+            
+            var relations = new RelationCollection(ontologyRelations);
+            return new Ontology(nodes, relations);
         }
 
         public Ontology Reload()
