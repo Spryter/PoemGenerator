@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using PoemGenerator.GeneratorComponent;
+using PoemGenerator.GeneratorComponent.Constants;
+using PoemGenerator.GeneratorComponent.Extensions;
 using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Abstractions;
 
-namespace PoemGenerator.App
+namespace PoemGenerator.App.Controls
 {
     public partial class SafeSituationGroupBox : UserControl
     {
@@ -31,19 +33,19 @@ namespace PoemGenerator.App
         private IEnumerable<IReadOnlyNode> ObjectDataSource
         {
             get => ((IEnumerable<IReadOnlyNode>)_object.DataSource).Skip(1);
-            set => _object.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _object.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
 
         private IEnumerable<IReadOnlyNode> ActionDataSource
         {
             get => ((IEnumerable<IReadOnlyNode>)_action.DataSource).Skip(1);
-            set => _action.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _action.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
 
         private IEnumerable<IReadOnlyNode> LocativeDataSource
         {
             get => ((IEnumerable<IReadOnlyNode>)_locative.DataSource).Skip(1);
-            set => _locative.DataSource = new[] {new Node(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _locative.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
         }
         
         public Generator Generator
@@ -238,12 +240,12 @@ namespace PoemGenerator.App
 
             if (selectedAction.Name != EmptyNodeName)
             {
-                situation.Action = selectedAction.Name;
+                situation.Action = selectedAction;
             }
             else
             {
                 var actionItem = _actionDataSource.ToNodeCollection().GetRandom();
-                situation.Action = actionItem.Name;
+                situation.Action = actionItem;
                 _objectDataSource = _objectDataSource
                     .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Object));
                 _locativeDataSource = _locativeDataSource
@@ -252,19 +254,19 @@ namespace PoemGenerator.App
 
             if (selectedObject.Name != EmptyNodeName)
             {
-                situation.Object = selectedObject.Name;
+                situation.Object = selectedObject;
             }
             else
             {
                 var objectItem = _objectDataSource.ToNodeCollection().GetRandom();
-                situation.Object = objectItem.Name;
+                situation.Object = objectItem;
                 _locativeDataSource = _locativeDataSource
                     .Intersect(GetRelevant(objectItem, Relations.Object, Relations.Locative));
             }
 
             situation.Locative = selectedLocative.Name != EmptyNodeName
-                ? selectedLocative.Name
-                : _locativeDataSource.ToNodeCollection().GetRandom().Name;
+                ? selectedLocative
+                : _locativeDataSource.ToNodeCollection().GetRandom();
 
             _objectDataSource = ObjectDataSource;
             _locativeDataSource = LocativeDataSource;

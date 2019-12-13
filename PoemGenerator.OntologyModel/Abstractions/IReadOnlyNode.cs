@@ -1,10 +1,14 @@
-﻿namespace PoemGenerator.OntologyModel.Abstractions
+﻿using Microsoft.Msagl.Core.Geometry;
+
+namespace PoemGenerator.OntologyModel.Abstractions
 {
     public interface IReadOnlyNode
     {
         int Id { get; }
         
         string Name { get; }
+        
+        Point Position { get; }
         
         /// <summary>
         /// Связи, которые идут в узел.

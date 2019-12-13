@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PoemGenerator.App.Controls;
 using PoemGenerator.GeneratorComponent;
 using PoemGenerator.OntolisAdapter;
 using PoemGenerator.OntologyModel;
-using PoemGenerator.OntologyModel.Abstractions;
 
 namespace PoemGenerator.App
 {
 	public partial class MainForm : Form
 	{
 		private readonly Ontolis _ontolis;
+		
+		private readonly OntologyViewModel _ontologyViewModel;
 		
 		private Generator _generator;
 
@@ -23,13 +24,18 @@ namespace PoemGenerator.App
 		private RichTextBox _poemTextBox;
 
 		private SafeSituationGroupBox _safeSituationGroupBox;
+
+		private OntologyViewer _ontologyViewer;
+
+		private List<Situation> _situations;
 		
 		public MainForm()
 		{
 			InitializeComponent();
-            InitializeMenu();
+			_ontologyViewModel = new OntologyViewModel();
+			_ontolis = new Ontolis();
+			InitializeMenu();
             InitializeForm();
-            _ontolis = new Ontolis();
 		}
 
         private void InitializeMenu()
@@ -72,6 +78,7 @@ namespace PoemGenerator.App
 	        {
 		        Dock = DockStyle.Fill
 	        };
+	        _poemTextBox.Click += PoemTextBoxClick;
 
 	        return _poemTextBox;
         }
@@ -86,36 +93,81 @@ namespace PoemGenerator.App
 	        return _safeSituationGroupBox;
         }
 
-        private void InitializeForm()
+        private TableLayoutPanel CreateGenerator()
         {
 	        var table = new TableLayoutPanel
 	        {
-				Dock = DockStyle.Fill
+		        Dock = DockStyle.Fill
 	        };
-	        table.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
 	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
 	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
-	        table.Controls.Add(CreateSituationGroupBox(), 0, 1);
-	        table.Controls.Add(CreatePoemTextBox(), 0, 2);
-	        table.Controls.Add(CreateGenerateButton(), 0, 3);
+	        table.Controls.Add(CreateSituationGroupBox(), 0, 0);
+	        table.Controls.Add(CreatePoemTextBox(), 0, 1);
+	        table.Controls.Add(CreateGenerateButton(), 0, 2);
 
+	        return table;
+        }
+
+        private OntologyViewer CreateOntologyViewer()
+        {
+	        _ontologyViewer = new OntologyViewer(_ontologyViewModel)
+	        {
+		        Dock = DockStyle.Fill
+	        };
+	        return _ontologyViewer;
+        }
+
+        private void InitializeForm()
+        {
+	        var table = new TableLayoutPanel
+	        {
+		        Dock = DockStyle.Fill
+	        };
+	        table.RowStyles.Add(new RowStyle(SizeType.Absolute, 18));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+
+	        table.Controls.Add(CreateGenerator(), 0, 1);
+	        table.Controls.Add(CreateOntologyViewer(), 0, 2);
+	        
 	        Controls.Add(table);
+        }
+
+        private void PoemTextBoxClick(object sender, EventArgs e)
+        {
+	        var firstCharIndex = _poemTextBox.GetFirstCharIndexOfCurrentLine();
+	        var currentLineIndex = _poemTextBox.GetLineFromCharIndex(firstCharIndex);
+	        var currentLineText = _poemTextBox.Lines[currentLineIndex];
+	        _poemTextBox.Select(firstCharIndex, currentLineText.Length);
+
+	        var situation = _situations[currentLineIndex];
+	        _ontologyViewModel.UpdateGraphColoring(situation.GetNodes(),situation.GetRelations());
         }
 
 		private void ButtonGenerateClick(object sender, EventArgs e)
 		{
 			var child = _generator.GenerateChild();
 			
+			var safeSituation = _safeSituationGroupBox.GetSituation();
+			var dangerousSituation = _generator.GenerateDangerousSituation();
+			_situations = new List<Situation> {safeSituation, dangerousSituation};
+			
 			var builder = new StringBuilder();
-			var situation = _safeSituationGroupBox.GetSituation();
-			builder.Append($"{child} {situation.Action} {situation.Object} {situation.Locative}");
+			builder.Append($"{child} {safeSituation.Action} {safeSituation.Object} {safeSituation.Locative}");
 			builder.Append(Environment.NewLine);
-			builder.Append($"{child} {_generator.GenerateDangerSituation()}");
+			builder.Append($"{child} {dangerousSituation.Action} {dangerousSituation.Object} {dangerousSituation.Locative}");
 			
 			_poemTextBox.Text = builder.ToString();
+		}
+
+		private void UpdateControlsWithOntology(Ontology ontology)
+		{
+			_generator = new Generator(ontology);
+			_safeSituationGroupBox.Generator = _generator;
+			_ontologyViewer.Ontology = ontology;
 		}
 
 		private void OpenOntologyClick(object sender, EventArgs e)
@@ -129,10 +181,9 @@ namespace PoemGenerator.App
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     var ontology = _ontolis.LoadByPath(openFileDialog.FileName);
-                    _generator = new Generator(ontology);
                     _generateButton.Enabled = true;
                     _editOntologyMenuItem.Enabled = true;
-                    _safeSituationGroupBox.Generator = _generator;
+                    UpdateControlsWithOntology(ontology);
                 }
             }
         }
@@ -143,8 +194,7 @@ namespace PoemGenerator.App
 			_ontolis.Open();
 			Visible = true;
 			var ontology = _ontolis.Reload();
-			_generator = new Generator(ontology);
-			_safeSituationGroupBox.Generator = _generator;
+			UpdateControlsWithOntology(ontology);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PoemGenerator.App
+namespace PoemGenerator.App.Controls
 {
     partial class SafeSituationGroupBox
     {

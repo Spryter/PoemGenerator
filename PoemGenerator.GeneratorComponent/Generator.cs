@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PoemGenerator.GeneratorComponent.Constants;
+using PoemGenerator.GeneratorComponent.Extensions;
 using PoemGenerator.OntologyModel;
 
 namespace PoemGenerator.GeneratorComponent
@@ -14,10 +16,10 @@ namespace PoemGenerator.GeneratorComponent
             Ontology = ontology;
         }
 
-        public string GenerateDangerSituation()
+        public Situation GenerateDangerousSituation()
         {
             var situations = Ontology.Nodes
-                .Get("опасная ситуация")
+                .Get(Nodes.DangerousSituation)
                 .ToIsA()
                 .ToNodeCollection();
 
@@ -36,17 +38,22 @@ namespace PoemGenerator.GeneratorComponent
                 .ToNodeCollection()
                 .GetRandom();
             
-            return $"{randomAction} {randomObject} {randomLocative}";
+            return new Situation
+            {
+                Action = randomAction,
+                Object = randomObject,
+                Locative = randomLocative
+            };
         }
 
         public string GenerateChild()
         {
             var child = Ontology.Nodes
-                .Get("ситуация")
+                .Get(Nodes.Situation)
                 .FromAgent()
                 .FirstOrDefault()
                 .ToIsA()
-                .Get("ребенок")
+                .Get(Nodes.Child)
                 .ToIsANested()
                 .GetRandom();
 

@@ -9,5 +9,11 @@ namespace PoemGenerator.OntolisAdapter.JsonModel
         
         [JsonProperty("name")]
         public string Name { get; set; }
+        
+        [JsonProperty("position_x")]
+        public int PositionX { get; set; }
+        
+        [JsonProperty("position_y")]
+        public int PositionY { get; set; }
     }
 }
