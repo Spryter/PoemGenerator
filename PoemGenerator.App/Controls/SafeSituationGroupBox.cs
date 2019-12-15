@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using PoemGenerator.GeneratorComponent;
 using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Extensions;
+using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Abstractions;
 
@@ -233,7 +234,7 @@ namespace PoemGenerator.App.Controls
 
         public Situation GetSituation()
         {
-            var situation = new Situation();
+            var situation = new SafeSituation();
             var selectedAction = (IReadOnlyNode) _action.SelectedItem;
             var selectedObject = (IReadOnlyNode) _object.SelectedItem;
             var selectedLocative = (IReadOnlyNode) _locative.SelectedItem;

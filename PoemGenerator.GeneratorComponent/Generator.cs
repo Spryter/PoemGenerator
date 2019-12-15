@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Extensions;
+using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntologyModel;
 
 namespace PoemGenerator.GeneratorComponent
@@ -38,7 +39,7 @@ namespace PoemGenerator.GeneratorComponent
                 .ToNodeCollection()
                 .GetRandom();
             
-            return new Situation
+            return new DangerousSituation
             {
                 Action = randomAction,
                 Object = randomObject,

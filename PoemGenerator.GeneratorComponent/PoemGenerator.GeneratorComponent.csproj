@@ -47,7 +47,9 @@
     <Compile Include="Extensions\RelationCollectionExtensions.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Situation.cs" />
+    <Compile Include="Situations\DangerousSituation.cs" />
+    <Compile Include="Situations\SafeSituation.cs" />
+    <Compile Include="Situations\Situation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PoemGenerator.OntologyModel\PoemGenerator.OntologyModel.csproj">

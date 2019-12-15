@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using PoemGenerator.App.Controls;
 using PoemGenerator.GeneratorComponent;
+using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntolisAdapter;
 using PoemGenerator.OntologyModel;
 
@@ -138,18 +139,16 @@ namespace PoemGenerator.App
 
         private void PoemTextBoxClick(object sender, EventArgs e)
         {
-			if (_poemTextBox.Lines.Length > 0)
-			{
-				var firstCharIndex = _poemTextBox.GetFirstCharIndexOfCurrentLine();
-				var currentLineIndex = _poemTextBox.GetLineFromCharIndex(firstCharIndex);
+	        if (_poemTextBox.Lines.Length <= 0) return;
+	        var firstCharIndex = _poemTextBox.GetFirstCharIndexOfCurrentLine();
+			var currentLineIndex = _poemTextBox.GetLineFromCharIndex(firstCharIndex);
 
-				var currentLineText = _poemTextBox.Lines[currentLineIndex];
-				_poemTextBox.Select(firstCharIndex, currentLineText.Length);
+			var currentLineText = _poemTextBox.Lines[currentLineIndex];
+			_poemTextBox.Select(firstCharIndex, currentLineText.Length);
 
-				if (currentLineIndex >= _situations.Count) return;
-				var situation = _situations[currentLineIndex];
-				_ontologyViewModel.UpdateGraphColoring(situation.GetNodes(), situation.GetRelations());
-			}
+			if (currentLineIndex >= _situations.Count) return;
+			var situation = _situations[currentLineIndex];
+			_ontologyViewModel.UpdateGraphColoring(situation.GetNodes(), situation.GetRelations());
         }
 
 		private void ButtonGenerateClick(object sender, EventArgs e)
