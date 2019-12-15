@@ -1,9 +1,13 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Msagl.Core.Geometry;
+using Microsoft.Msagl.Core.Layout;
 using Microsoft.Msagl.Drawing;
 using Microsoft.Msagl.GraphViewerGdi;
+using Microsoft.Msagl.Routing;
 using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Abstractions;
+using Node = Microsoft.Msagl.Drawing.Node;
 
 namespace PoemGenerator.App.Controls
 {
@@ -39,7 +43,7 @@ namespace PoemGenerator.App.Controls
             Controls.Add(_viewer);
         }
 
-        private void UpdateGraph(IReadOnlyNodeCollection nodes = null, IReadOnlyRelationCollection relations = null)
+        private Graph CreateGraph(IReadOnlyNodeCollection nodes = null, IReadOnlyRelationCollection relations = null)
         {
             var graph = new Graph();
             foreach (var ontologyNode in _ontology.Nodes)
@@ -67,7 +71,33 @@ namespace PoemGenerator.App.Controls
                 }
             }
 
+            return graph;
+        }
+
+        private void UpdateGeometryGraph(Graph graph)
+        {
+            foreach (var ontologyNode in _ontology.Nodes)
+            {
+                var node = graph.FindGeometryNode(ontologyNode.Id.ToString());
+                node.Center = new Point(ontologyNode.Position.X, -ontologyNode.Position.Y);
+            }
+            
+            foreach (var edge in graph.Edges)
+            {
+                StraightLineEdges.CreateSimpleEdgeCurveWithUnderlyingPolyline(edge.GeometryEdge);
+            }
+            
+            new EdgeLabelPlacement(graph.GeometryGraph).Run();
+            graph.GeometryGraph.UpdateBoundingBox();
+            _viewer.Transform = null;
+            _viewer.DrawingPanel.Invalidate();
+        }
+
+        private void UpdateGraph(IReadOnlyNodeCollection nodes = null, IReadOnlyRelationCollection relations = null)
+        {
+            var graph = CreateGraph(nodes, relations);
             _viewer.Graph = graph;
+            UpdateGeometryGraph(graph);
         }
     }
 }

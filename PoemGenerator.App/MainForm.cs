@@ -143,6 +143,7 @@ namespace PoemGenerator.App
 	        var currentLineText = _poemTextBox.Lines[currentLineIndex];
 	        _poemTextBox.Select(firstCharIndex, currentLineText.Length);
 
+	        if (currentLineIndex >= _situations.Count) return;
 	        var situation = _situations[currentLineIndex];
 	        _ontologyViewModel.UpdateGraphColoring(situation.GetNodes(),situation.GetRelations());
         }
