@@ -138,14 +138,18 @@ namespace PoemGenerator.App
 
         private void PoemTextBoxClick(object sender, EventArgs e)
         {
-	        var firstCharIndex = _poemTextBox.GetFirstCharIndexOfCurrentLine();
-	        var currentLineIndex = _poemTextBox.GetLineFromCharIndex(firstCharIndex);
-	        var currentLineText = _poemTextBox.Lines[currentLineIndex];
-	        _poemTextBox.Select(firstCharIndex, currentLineText.Length);
+			if (_poemTextBox.Lines.Length > 0)
+			{
+				var firstCharIndex = _poemTextBox.GetFirstCharIndexOfCurrentLine();
+				var currentLineIndex = _poemTextBox.GetLineFromCharIndex(firstCharIndex);
 
-	        if (currentLineIndex >= _situations.Count) return;
-	        var situation = _situations[currentLineIndex];
-	        _ontologyViewModel.UpdateGraphColoring(situation.GetNodes(),situation.GetRelations());
+				var currentLineText = _poemTextBox.Lines[currentLineIndex];
+				_poemTextBox.Select(firstCharIndex, currentLineText.Length);
+
+				if (currentLineIndex >= _situations.Count) return;
+				var situation = _situations[currentLineIndex];
+				_ontologyViewModel.UpdateGraphColoring(situation.GetNodes(), situation.GetRelations());
+			}
         }
 
 		private void ButtonGenerateClick(object sender, EventArgs e)
