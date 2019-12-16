@@ -100,8 +100,8 @@ namespace PoemGenerator.App
 	        {
 		        Dock = DockStyle.Fill
 	        };
-	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
-	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 60));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
 	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 	        table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
@@ -128,8 +128,8 @@ namespace PoemGenerator.App
 		        Dock = DockStyle.Fill
 	        };
 	        table.RowStyles.Add(new RowStyle(SizeType.Absolute, 18));
-	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
-	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 30));
+	        table.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
 
 	        table.Controls.Add(CreateGenerator(), 0, 1);
 	        table.Controls.Add(CreateOntologyViewer(), 0, 2);
