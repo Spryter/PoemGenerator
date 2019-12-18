@@ -50,6 +50,7 @@ namespace PoemGenerator.App.Controls
             set
             {
                 _generator = value;
+                _situation = new SafeSituation();
                 UpdateDataSource();
             }
         }
