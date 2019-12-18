@@ -19,5 +19,7 @@
         public const string Action = "action";
 
         public const string Agent = "agent";
+
+        public const string Affects = "affects";
     }
 }

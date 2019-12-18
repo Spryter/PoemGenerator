@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Extensions;
@@ -9,6 +10,45 @@ namespace PoemGenerator.GeneratorComponent.Situations
 {
     public class SafeSituation: Situation
     {
+        private static IReadOnlyNode GetParentAgent(IReadOnlyNode agent)
+        {
+            var agents = new Queue<IReadOnlyNode>();
+            agents.Enqueue(agent);
+            while (agents.Count > 0)
+            {
+                agent = agents.Dequeue();
+                if (agent.ToRelations.Any(x => x.Name == Relations.Agent))
+                    return agent;
+                foreach (var node in agent.FromIsA())
+                {
+                    agents.Enqueue(node);
+                }
+            }
+
+            throw new ArgumentException();
+        }
+
+        private static List<IReadOnlyRelation> GetAgentRelations(IReadOnlyNode agent, IReadOnlyNode parentAgent)
+        {
+            if (agent == parentAgent)
+                return new List<IReadOnlyRelation>();
+            
+            if (agent.FromIsA().Any(currentNode => currentNode == parentAgent))
+            {
+                return new List<IReadOnlyRelation> {agent.FromRelations.Where(x => x.Name == Relations.IsA).First(x => x.To == parentAgent)};
+            }
+
+            foreach (var node in agent.FromIsA())
+            {
+                var relations = GetAgentRelations(node, parentAgent);
+                if (relations.Count <= 0) continue;
+                relations.Add(node.FromRelations.Where(x => x.Name == Relations.IsA).FirstOrDefault(x => x.To == agent));
+                return relations;
+            }
+            
+            return new List<IReadOnlyRelation>();
+        }
+        
         private static List<IReadOnlyRelation> GetRelations(IReadOnlyNode node, IReadOnlyNode nodeToFind, string relation, bool isFrom)
         {
             if (node.From(relation).Any(currentNode => currentNode == nodeToFind))
@@ -28,14 +68,16 @@ namespace PoemGenerator.GeneratorComponent.Situations
             
             return new List<IReadOnlyRelation>();
         }
-        
+
         public override IReadOnlyNodeCollection GetNodes()
         {
-            return new[] {Action, Object, Locative}.ToNodeCollection();
+            return new[] {Agent, Action, Object, Locative}.ToNodeCollection();
         }
 
         public override IReadOnlyRelationCollection GetRelations()
         {
+            var parentAgent = GetParentAgent(Agent);
+            var agentRelations = GetAgentRelations(Agent, parentAgent);
             foreach (var currentNode in Action.To(Relations.Action)
                 .Where(x => x.FromIsANested().Any(y => y.Name == Nodes.SafeSituation)))
             {
@@ -44,11 +86,19 @@ namespace PoemGenerator.GeneratorComponent.Situations
                 var objectRelationsTo = GetRelations(currentNode, Object, Relations.Object, false);
                 var locativeRelationsFrom = GetRelations(currentNode, Locative, Relations.Locative, true);
                 var locativeRelationsTo = GetRelations(currentNode, Locative, Relations.Locative, false);
+                var agentRelationsFrom = GetRelations(currentNode, parentAgent, Relations.Agent, true);
+                var agentRelationsTo = GetRelations(currentNode, parentAgent, Relations.Agent, false);
                 result.AddRange(objectRelationsFrom
                     .Union(objectRelationsTo)
                     .Union(locativeRelationsFrom)
-                    .Union(locativeRelationsTo));
-                if (result.Count > 1)
+                    .Union(locativeRelationsTo)
+                    .Union(agentRelationsFrom)
+                    .Union(agentRelationsTo)
+                    .Union(agentRelations));
+                if ((Action.Name == string.Empty || result.Any(x => x.To == Action)) &&
+                    (Object.Name == string.Empty || result.Any(x => x.To == Object)) &&
+                    (Locative.Name == string.Empty || result.Any(x => x.To == Locative)) &&
+                    (Agent.Name == string.Empty || result.Any(x => x.To == parentAgent)))
                     return result.ToRelationCollection();
             }
             

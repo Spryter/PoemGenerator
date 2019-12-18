@@ -18,6 +18,8 @@ namespace PoemGenerator.App.Controls
         private const int EmptyNodeId = -1;
 
         private Generator _generator;
+        
+        private ComboBox _agent;
 
         private ComboBox _object;
 
@@ -25,11 +27,19 @@ namespace PoemGenerator.App.Controls
 
         private ComboBox _locative;
 
+        private IEnumerable<IReadOnlyNode> _agentDataSource;
+
         private IEnumerable<IReadOnlyNode> _objectDataSource;
 
         private IEnumerable<IReadOnlyNode> _actionDataSource;
 
         private IEnumerable<IReadOnlyNode> _locativeDataSource;
+        
+        private IEnumerable<IReadOnlyNode> AgentDataSource
+        {
+            get => ((IEnumerable<IReadOnlyNode>)_agent.DataSource).Skip(1);
+            set => _agent.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+        }
 
         private IEnumerable<IReadOnlyNode> ObjectDataSource
         {
@@ -107,6 +117,7 @@ namespace PoemGenerator.App.Controls
 
         private void InitializeGroupBox()
         {
+            var agentElement = CreateSituationElement("Актор", out _agent);
             var actionElement = CreateSituationElement("Действие", out _action);
             var objectElement = CreateSituationElement("Предмет", out _object);
             var locativeElement = CreateSituationElement("Локатив", out _locative);
@@ -116,13 +127,15 @@ namespace PoemGenerator.App.Controls
                 Dock = DockStyle.Fill
             };
             table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
 
-            table.Controls.Add(actionElement, 0, 0);
-            table.Controls.Add(objectElement, 1, 0);
-            table.Controls.Add(locativeElement, 2, 0);
+            table.Controls.Add(agentElement, 0, 0);
+            table.Controls.Add(actionElement, 1, 0);
+            table.Controls.Add(objectElement, 2, 0);
+            table.Controls.Add(locativeElement, 3, 0);
 
             var groupBox = new GroupBox
             {
@@ -140,21 +153,55 @@ namespace PoemGenerator.App.Controls
             _actionDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromAction()).ToNodeCollection();
             _objectDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromObject()).ToNodeCollection();
             _locativeDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromLocative()).ToNodeCollection();
+            _agentDataSource = safeSituation
+                .SelectMany(x => x.ToIsANestedFromAgent())
+                .Union(safeSituation
+                    .SelectMany(x => x.ToIsANestedFromAgent())
+                    .SelectMany(x => x.ToIsANested()))
+                .Distinct()
+                .ToNodeCollection();
             ActionDataSource = _actionDataSource;
             ObjectDataSource = _objectDataSource;
             LocativeDataSource = _locativeDataSource;
+            AgentDataSource = _agentDataSource;
         }
         
         private void SelectedItemChanged(object obj, EventArgs args)
         {
+            var agentSelectedItem = (IReadOnlyNode) _agent.SelectedItem;
             var actionSelectedItem = (IReadOnlyNode)_action.SelectedItem;
             var objectSelectedItem = (IReadOnlyNode)_object.SelectedItem;
             var locativeSelectedItem = (IReadOnlyNode)_locative.SelectedItem;
 
             UpdateDataSource();
 
+            if (agentSelectedItem.Name != EmptyNodeName)
+            {
+                var agent = GetParentAgent(agentSelectedItem);
+                ActionDataSource = _actionDataSource
+                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Action))
+                    .ToNodeCollection();
+                _actionDataSource = ActionDataSource;
+                ObjectDataSource = _objectDataSource
+                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Object))
+                    .ToNodeCollection();
+                _objectDataSource = ObjectDataSource;
+                LocativeDataSource = _locativeDataSource
+                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Locative))
+                    .ToNodeCollection();
+                _locativeDataSource = LocativeDataSource;
+            }
+
             if (actionSelectedItem.Name != EmptyNodeName)
             {
+                var relevantAgents = GetRelevant(actionSelectedItem, Relations.Action, Relations.Agent).ToList();
+                AgentDataSource = _agentDataSource
+                    .Intersect(relevantAgents
+                        .Union(relevantAgents
+                            .SelectMany(x => x.ToIsANested()))
+                        .Distinct())
+                    .ToNodeCollection();
+                _agentDataSource = AgentDataSource;
                 ObjectDataSource = _objectDataSource
                     .Intersect(GetRelevant(actionSelectedItem, Relations.Action, Relations.Object))
                     .ToNodeCollection();
@@ -167,6 +214,14 @@ namespace PoemGenerator.App.Controls
 
             if (objectSelectedItem.Name != EmptyNodeName)
             {
+                var relevantAgents = GetRelevant(objectSelectedItem, Relations.Object, Relations.Agent).ToList();
+                AgentDataSource = _agentDataSource
+                    .Intersect(relevantAgents
+                        .Union(relevantAgents
+                            .SelectMany(x => x.ToIsANested()))
+                        .Distinct())
+                    .ToNodeCollection();
+                _agentDataSource = AgentDataSource;
                 ActionDataSource = _actionDataSource
                     .Intersect(GetRelevant(objectSelectedItem, Relations.Object, Relations.Action))
                     .ToNodeCollection();
@@ -179,6 +234,14 @@ namespace PoemGenerator.App.Controls
 
             if (locativeSelectedItem.Name != EmptyNodeName)
             {
+                var relevantAgents = GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Agent).ToList();
+                AgentDataSource = _agentDataSource
+                    .Intersect(relevantAgents
+                        .Union(relevantAgents
+                            .SelectMany(x => x.ToIsANested()))
+                        .Distinct())
+                    .ToNodeCollection();
+                _agentDataSource = AgentDataSource;
                 ActionDataSource = _actionDataSource
                     .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Action))
                     .ToNodeCollection();
@@ -187,6 +250,11 @@ namespace PoemGenerator.App.Controls
                     .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Object))
                     .ToNodeCollection();
                 _objectDataSource = ObjectDataSource;
+            }
+
+            if (agentSelectedItem.Name != EmptyNodeName)
+            {
+                _agent.SelectedItem = agentSelectedItem;
             }
 
             if (actionSelectedItem.Name != EmptyNodeName)
@@ -204,6 +272,7 @@ namespace PoemGenerator.App.Controls
                 _locative.SelectedItem = locativeSelectedItem;
             }
 
+            _agentDataSource = AgentDataSource;
             _actionDataSource = ActionDataSource;
             _objectDataSource = ObjectDataSource;
             _locativeDataSource = LocativeDataSource;
@@ -232,12 +301,55 @@ namespace PoemGenerator.App.Controls
                 );
         }
 
-        public Situation GetSituation()
+        private static IReadOnlyNode GetParentAgent(IReadOnlyNode agent)
+        {
+            var agents = new Queue<IReadOnlyNode>();
+            agents.Enqueue(agent);
+            while (agents.Count > 0)
+            {
+                agent = agents.Dequeue();
+                if (agent.ToRelations.Any(x => x.Name == Relations.Agent))
+                    return agent;
+                foreach (var node in agent.FromIsA())
+                {
+                    agents.Enqueue(node);
+                }
+            }
+
+            throw new ArgumentException();
+        }
+
+        public SafeSituation GetSituation()
         {
             var situation = new SafeSituation();
+            var selectedAgent = (IReadOnlyNode) _agent.SelectedItem;
             var selectedAction = (IReadOnlyNode) _action.SelectedItem;
             var selectedObject = (IReadOnlyNode) _object.SelectedItem;
             var selectedLocative = (IReadOnlyNode) _locative.SelectedItem;
+
+            if (selectedAgent.Name != EmptyNodeName)
+            {
+                situation.Agent = selectedAgent;
+            }
+            else
+            {
+                if (_agentDataSource.Any())
+                {
+                    var agentItem = _agentDataSource.ToNodeCollection().GetRandom();
+                    situation.Agent = agentItem;
+                    var agent = GetParentAgent(agentItem);
+                    _actionDataSource = _actionDataSource
+                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Action));
+                    _objectDataSource = _objectDataSource
+                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Object));
+                    _locativeDataSource = _locativeDataSource
+                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Locative));
+                }
+                else
+                {
+                    situation.Agent = new OntologyNode(-1, "");
+                }
+            }
 
             if (selectedAction.Name != EmptyNodeName)
             {
@@ -245,12 +357,19 @@ namespace PoemGenerator.App.Controls
             }
             else
             {
-                var actionItem = _actionDataSource.ToNodeCollection().GetRandom();
-                situation.Action = actionItem;
-                _objectDataSource = _objectDataSource
-                    .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Object));
-                _locativeDataSource = _locativeDataSource
-                    .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Locative));
+                if (_actionDataSource.Any())
+                {
+                    var actionItem = _actionDataSource.ToNodeCollection().GetRandom();
+                    situation.Action = actionItem;
+                    _objectDataSource = _objectDataSource
+                        .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Object));
+                    _locativeDataSource = _locativeDataSource
+                        .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Locative));
+                }
+                else
+                {
+                    situation.Action = new OntologyNode(-1, "");
+                }
             }
 
             if (selectedObject.Name != EmptyNodeName)
@@ -259,16 +378,26 @@ namespace PoemGenerator.App.Controls
             }
             else
             {
-                var objectItem = _objectDataSource.ToNodeCollection().GetRandom();
-                situation.Object = objectItem;
-                _locativeDataSource = _locativeDataSource
-                    .Intersect(GetRelevant(objectItem, Relations.Object, Relations.Locative));
+                if (_objectDataSource.Any())
+                {
+                    var objectItem = _objectDataSource.ToNodeCollection().GetRandom();
+                    situation.Object = objectItem;
+                    _locativeDataSource = _locativeDataSource
+                        .Intersect(GetRelevant(objectItem, Relations.Object, Relations.Locative));
+                }
+                else
+                {
+                    situation.Object = new OntologyNode(-1, "");
+                }
             }
 
             situation.Locative = selectedLocative.Name != EmptyNodeName
                 ? selectedLocative
-                : _locativeDataSource.ToNodeCollection().GetRandom();
+                : _locativeDataSource.Any()
+                    ? _locativeDataSource.ToNodeCollection().GetRandom()
+                    : new OntologyNode(-1, "");
 
+            _actionDataSource = ActionDataSource;
             _objectDataSource = ObjectDataSource;
             _locativeDataSource = LocativeDataSource;
 

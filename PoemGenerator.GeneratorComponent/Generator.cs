@@ -17,7 +17,7 @@ namespace PoemGenerator.GeneratorComponent
             Ontology = ontology;
         }
 
-        public Situation GenerateDangerousSituation()
+        public DangerousSituation GenerateDangerousSituation()
         {
             var situations = Ontology.Nodes
                 .Get(Nodes.DangerousSituation)
@@ -45,57 +45,6 @@ namespace PoemGenerator.GeneratorComponent
                 Object = randomObject,
                 Locative = randomLocative
             };
-        }
-
-        public string GenerateChild()
-        {
-            var child = Ontology.Nodes
-                .Get(Nodes.Situation)
-                .FromAgent()
-                .FirstOrDefault()
-                .ToIsA()
-                .Get(Nodes.Child)
-                .ToIsANested()
-                .GetRandom();
-
-            return child.Name;
-        }
-
-        public string GeneratePoem()
-        {
-			var elements = Ontology.Nodes
-				.Get("стихотворение")
-				.ToAPartOf()
-				.Get("1 строка")
-				.ToAPartOf()
-                .FirstOrDefault(x => x.FromOrder().Get("1") != null)
-                .FromElement()
-                .FirstOrDefault()
-                .ToIsA();
-            var rnd = new Random();
-            var index = rnd.Next(elements.Count);
-            var element = elements.ElementAt(index);
-            var poemStrings = Ontology.Nodes
-                .Get("стихотворение")
-                .ToAPartOf()
-                .OrderBy(s => s.FromOrder().FirstOrDefault().Name);
-            foreach (var poemString in poemStrings)
-            {
-                var stringParts = poemString
-                    .ToAPartOf()
-                    .OrderBy(se => se.FromOrder().FirstOrDefault().Name);
-                foreach (var stringPart in stringParts)
-                {
-                    var partElement = stringPart.FromElement().FirstOrDefault();
-                    switch (partElement.Name)
-                    {
-                        //case для обработки разных типов элементов
-                    }
-                    // конкатенация частей строк
-                }
-            }
-
-            return element.Name;
         }
     }
 }

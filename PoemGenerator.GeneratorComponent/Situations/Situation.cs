@@ -4,6 +4,8 @@ namespace PoemGenerator.GeneratorComponent.Situations
 {
     public abstract class Situation
     {
+        public IReadOnlyNode Agent { get; set; }
+        
         public IReadOnlyNode Action { get; set; }
         
         public IReadOnlyNode Object { get; set; }

@@ -782,26 +782,10 @@
         {
             "attributes": {
             },
-            "destination_node_id": "330",
-            "id": "332",
-            "name": "",
-            "source_node_id": "330"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "333",
             "id": "334",
             "name": "locative",
             "source_node_id": "326"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "335",
-            "id": "336",
-            "name": "",
-            "source_node_id": "335"
         },
         {
             "attributes": {
@@ -910,33 +894,9 @@
         {
             "attributes": {
             },
-            "destination_node_id": "365",
-            "id": "368",
-            "name": "",
-            "source_node_id": "365"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "341",
             "id": "374",
             "name": "is_a",
-            "source_node_id": "373"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "365",
-            "id": "375",
-            "name": "",
-            "source_node_id": "365"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "373",
-            "id": "381",
-            "name": "",
             "source_node_id": "373"
         },
         {
@@ -1026,22 +986,6 @@
             "id": "400",
             "name": "action",
             "source_node_id": "397"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "399",
-            "id": "401",
-            "name": "",
-            "source_node_id": "399"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "292",
-            "id": "402",
-            "name": "",
-            "source_node_id": "292"
         },
         {
             "attributes": {

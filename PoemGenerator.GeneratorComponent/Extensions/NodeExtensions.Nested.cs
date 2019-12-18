@@ -37,6 +37,16 @@ namespace PoemGenerator.GeneratorComponent.Extensions
         }
         
         /// <summary>
+        /// Возвращает коллекцию узлов, которые исходят по связи <see cref="Relations.Agent"/> из всех нижележащих узов по вложенной входящей связи <see cref="Relations.IsA"/>.
+        /// </summary>
+        /// <param name="node">Узел</param>
+        /// <returns>Коллекция узлов.</returns>
+        public static IReadOnlyNodeCollection ToIsANestedFromAgent(this IReadOnlyNode node)
+        {
+            return node.ToNestedFrom(Relations.IsA, Relations.Agent);
+        }
+        
+        /// <summary>
         /// Возвращает коллекцию узлов, которые вложенно входят по связи <see cref="Relations.IsA"/>.
         /// </summary>
         /// <param name="node">Узел</param>
