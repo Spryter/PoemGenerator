@@ -95,10 +95,10 @@ namespace PoemGenerator.GeneratorComponent.Situations
                     .Union(agentRelationsFrom)
                     .Union(agentRelationsTo)
                     .Union(agentRelations));
-                if ((Action.Name == string.Empty || result.Any(x => x.To == Action)) &&
-                    (Object.Name == string.Empty || result.Any(x => x.To == Object)) &&
-                    (Locative.Name == string.Empty || result.Any(x => x.To == Locative)) &&
-                    (Agent.Name == string.Empty || result.Any(x => x.To == parentAgent)))
+                if ((Action.Name == EmptyOntologyNode.Name || result.Any(x => x.To == Action)) &&
+                    (Object.Name == EmptyOntologyNode.Name || result.Any(x => x.To == Object)) &&
+                    (Locative.Name == EmptyOntologyNode.Name || result.Any(x => x.To == Locative)) &&
+                    (Agent.Name == EmptyOntologyNode.Name || result.Any(x => x.To == parentAgent)))
                     return result.ToRelationCollection();
             }
             

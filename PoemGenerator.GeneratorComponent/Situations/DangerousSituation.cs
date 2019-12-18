@@ -8,7 +8,7 @@ namespace PoemGenerator.GeneratorComponent.Situations
     {
         public override IReadOnlyNodeCollection GetNodes()
         {
-            return new[] {Action, Object, Locative}.ToNodeCollection();
+            return new[] {Agent, Action, Object, Locative}.ToNodeCollection();
         }
 
         public override IReadOnlyRelationCollection GetRelations()

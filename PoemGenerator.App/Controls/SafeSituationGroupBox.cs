@@ -6,18 +6,15 @@ using PoemGenerator.GeneratorComponent;
 using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Extensions;
 using PoemGenerator.GeneratorComponent.Situations;
-using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Abstractions;
 
 namespace PoemGenerator.App.Controls
 {
     public partial class SafeSituationGroupBox : UserControl
     {
-        private const string EmptyNodeName = "пусто";
-
-        private const int EmptyNodeId = -1;
-
         private Generator _generator;
+
+        private SafeSituation _situation;
         
         private ComboBox _agent;
 
@@ -26,37 +23,25 @@ namespace PoemGenerator.App.Controls
         private ComboBox _action;
 
         private ComboBox _locative;
-
-        private IEnumerable<IReadOnlyNode> _agentDataSource;
-
-        private IEnumerable<IReadOnlyNode> _objectDataSource;
-
-        private IEnumerable<IReadOnlyNode> _actionDataSource;
-
-        private IEnumerable<IReadOnlyNode> _locativeDataSource;
         
         private IEnumerable<IReadOnlyNode> AgentDataSource
         {
-            get => ((IEnumerable<IReadOnlyNode>)_agent.DataSource).Skip(1);
-            set => _agent.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _agent.DataSource = GetDataSourceWithEmptyNode(value);
         }
 
         private IEnumerable<IReadOnlyNode> ObjectDataSource
         {
-            get => ((IEnumerable<IReadOnlyNode>)_object.DataSource).Skip(1);
-            set => _object.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _object.DataSource = GetDataSourceWithEmptyNode(value);
         }
 
         private IEnumerable<IReadOnlyNode> ActionDataSource
         {
-            get => ((IEnumerable<IReadOnlyNode>)_action.DataSource).Skip(1);
-            set => _action.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _action.DataSource = GetDataSourceWithEmptyNode(value);
         }
 
         private IEnumerable<IReadOnlyNode> LocativeDataSource
         {
-            get => ((IEnumerable<IReadOnlyNode>)_locative.DataSource).Skip(1);
-            set => _locative.DataSource = new[] {new OntologyNode(EmptyNodeId, EmptyNodeName)}.Union(value).ToList();
+            set => _locative.DataSource = GetDataSourceWithEmptyNode(value);
         }
         
         public Generator Generator
@@ -73,7 +58,11 @@ namespace PoemGenerator.App.Controls
         {
             InitializeComponent();
             InitializeGroupBox();
+            _situation = new SafeSituation();
         }
+
+        private static List<IReadOnlyNode> GetDataSourceWithEmptyNode(IEnumerable<IReadOnlyNode> nodes) =>
+            new[] {new EmptyOntologyNode()}.Union(nodes).ToList();
 
         private static Label CreateSituationLabel(string text)
         {
@@ -149,259 +138,34 @@ namespace PoemGenerator.App.Controls
 
         private void UpdateDataSource()
         {
-            var safeSituation = _generator.Ontology.Nodes.Get(Nodes.SafeSituation).ToIsA();
-            _actionDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromAction()).ToNodeCollection();
-            _objectDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromObject()).ToNodeCollection();
-            _locativeDataSource = safeSituation.SelectMany(x => x.ToIsANestedFromLocative()).ToNodeCollection();
-            _agentDataSource = safeSituation
-                .SelectMany(x => x.ToIsANestedFromAgent())
-                .Union(safeSituation
-                    .SelectMany(x => x.ToIsANestedFromAgent())
-                    .SelectMany(x => x.ToIsANested()))
-                .Distinct()
-                .ToNodeCollection();
-            ActionDataSource = _actionDataSource;
-            ObjectDataSource = _objectDataSource;
-            LocativeDataSource = _locativeDataSource;
-            AgentDataSource = _agentDataSource;
+            var relevantNodes = _generator.GetRelevantNodes(_situation, Nodes.SafeSituation);
+            ActionDataSource = relevantNodes.Actions;
+            AgentDataSource = relevantNodes.Agents;
+            ObjectDataSource = relevantNodes.Objects;
+            LocativeDataSource = relevantNodes.Locatives;
         }
         
         private void SelectedItemChanged(object obj, EventArgs args)
         {
-            var agentSelectedItem = (IReadOnlyNode) _agent.SelectedItem;
-            var actionSelectedItem = (IReadOnlyNode)_action.SelectedItem;
-            var objectSelectedItem = (IReadOnlyNode)_object.SelectedItem;
-            var locativeSelectedItem = (IReadOnlyNode)_locative.SelectedItem;
+            _situation = new SafeSituation
+            {
+                Action = (IReadOnlyNode) _action.SelectedItem,
+                Agent = (IReadOnlyNode) _agent.SelectedItem,
+                Object = (IReadOnlyNode) _object.SelectedItem,
+                Locative = (IReadOnlyNode) _locative.SelectedItem
+            };
 
             UpdateDataSource();
 
-            if (agentSelectedItem.Name != EmptyNodeName)
-            {
-                var agent = GetParentAgent(agentSelectedItem);
-                ActionDataSource = _actionDataSource
-                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Action))
-                    .ToNodeCollection();
-                _actionDataSource = ActionDataSource;
-                ObjectDataSource = _objectDataSource
-                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Object))
-                    .ToNodeCollection();
-                _objectDataSource = ObjectDataSource;
-                LocativeDataSource = _locativeDataSource
-                    .Intersect(GetRelevant(agent, Relations.Agent, Relations.Locative))
-                    .ToNodeCollection();
-                _locativeDataSource = LocativeDataSource;
-            }
-
-            if (actionSelectedItem.Name != EmptyNodeName)
-            {
-                var relevantAgents = GetRelevant(actionSelectedItem, Relations.Action, Relations.Agent).ToList();
-                AgentDataSource = _agentDataSource
-                    .Intersect(relevantAgents
-                        .Union(relevantAgents
-                            .SelectMany(x => x.ToIsANested()))
-                        .Distinct())
-                    .ToNodeCollection();
-                _agentDataSource = AgentDataSource;
-                ObjectDataSource = _objectDataSource
-                    .Intersect(GetRelevant(actionSelectedItem, Relations.Action, Relations.Object))
-                    .ToNodeCollection();
-                _objectDataSource = ObjectDataSource;
-                LocativeDataSource = _locativeDataSource
-                    .Intersect(GetRelevant(actionSelectedItem, Relations.Action, Relations.Locative))
-                    .ToNodeCollection();
-                _locativeDataSource = LocativeDataSource;
-            }
-
-            if (objectSelectedItem.Name != EmptyNodeName)
-            {
-                var relevantAgents = GetRelevant(objectSelectedItem, Relations.Object, Relations.Agent).ToList();
-                AgentDataSource = _agentDataSource
-                    .Intersect(relevantAgents
-                        .Union(relevantAgents
-                            .SelectMany(x => x.ToIsANested()))
-                        .Distinct())
-                    .ToNodeCollection();
-                _agentDataSource = AgentDataSource;
-                ActionDataSource = _actionDataSource
-                    .Intersect(GetRelevant(objectSelectedItem, Relations.Object, Relations.Action))
-                    .ToNodeCollection();
-                _actionDataSource = ActionDataSource;
-                LocativeDataSource = _locativeDataSource
-                    .Intersect(GetRelevant(objectSelectedItem, Relations.Object, Relations.Locative))
-                    .ToNodeCollection();
-                _locativeDataSource = LocativeDataSource;
-            }
-
-            if (locativeSelectedItem.Name != EmptyNodeName)
-            {
-                var relevantAgents = GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Agent).ToList();
-                AgentDataSource = _agentDataSource
-                    .Intersect(relevantAgents
-                        .Union(relevantAgents
-                            .SelectMany(x => x.ToIsANested()))
-                        .Distinct())
-                    .ToNodeCollection();
-                _agentDataSource = AgentDataSource;
-                ActionDataSource = _actionDataSource
-                    .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Action))
-                    .ToNodeCollection();
-                _actionDataSource = ActionDataSource;
-                ObjectDataSource = _objectDataSource
-                    .Intersect(GetRelevant(locativeSelectedItem, Relations.Locative, Relations.Object))
-                    .ToNodeCollection();
-                _objectDataSource = ObjectDataSource;
-            }
-
-            if (agentSelectedItem.Name != EmptyNodeName)
-            {
-                _agent.SelectedItem = agentSelectedItem;
-            }
-
-            if (actionSelectedItem.Name != EmptyNodeName)
-            {
-                _action.SelectedItem = actionSelectedItem;
-            }
-
-            if (objectSelectedItem.Name != EmptyNodeName)
-            {
-                _object.SelectedItem = objectSelectedItem;
-            }
-
-            if (locativeSelectedItem.Name != EmptyNodeName)
-            {
-                _locative.SelectedItem = locativeSelectedItem;
-            }
-
-            _agentDataSource = AgentDataSource;
-            _actionDataSource = ActionDataSource;
-            _objectDataSource = ObjectDataSource;
-            _locativeDataSource = LocativeDataSource;
-        }
-
-        /// <summary>
-        /// Возвращает множество узлов, которые подходят по иерархии с заданными связями
-        /// </summary>
-        /// <param name="node">Узел части фрейма.</param>
-        /// <param name="toRelation">Связь части фрейма.</param>
-        /// <param name="fromRelation">Узлы со связями которые надо найти.</param>
-        /// <returns>Множество узлов.</returns>
-        private static IEnumerable<IReadOnlyNode> GetRelevant(IReadOnlyNode node, string toRelation,
-            string fromRelation)
-        {
-            return node.To(toRelation)
-                .SelectMany(x => x.From(fromRelation))
-                .Union(node
-                    .To(toRelation)
-                    .SelectMany(x => x
-                        .ToIsANestedFrom(fromRelation)
-                        .Union(x
-                            .FromIsANested()
-                            .Where(y => y.Name != Nodes.MainFrameNode)
-                            .SelectMany(y => y.From(fromRelation))))
-                );
-        }
-
-        private static IReadOnlyNode GetParentAgent(IReadOnlyNode agent)
-        {
-            var agents = new Queue<IReadOnlyNode>();
-            agents.Enqueue(agent);
-            while (agents.Count > 0)
-            {
-                agent = agents.Dequeue();
-                if (agent.ToRelations.Any(x => x.Name == Relations.Agent))
-                    return agent;
-                foreach (var node in agent.FromIsA())
-                {
-                    agents.Enqueue(node);
-                }
-            }
-
-            throw new ArgumentException();
+            _agent.SelectedItem = _situation.Agent;
+            _action.SelectedItem = _situation.Action;
+            _object.SelectedItem = _situation.Object;
+            _locative.SelectedItem = _situation.Locative;
         }
 
         public SafeSituation GetSituation()
         {
-            var situation = new SafeSituation();
-            var selectedAgent = (IReadOnlyNode) _agent.SelectedItem;
-            var selectedAction = (IReadOnlyNode) _action.SelectedItem;
-            var selectedObject = (IReadOnlyNode) _object.SelectedItem;
-            var selectedLocative = (IReadOnlyNode) _locative.SelectedItem;
-
-            if (selectedAgent.Name != EmptyNodeName)
-            {
-                situation.Agent = selectedAgent;
-            }
-            else
-            {
-                if (_agentDataSource.Any())
-                {
-                    var agentItem = _agentDataSource.ToNodeCollection().GetRandom();
-                    situation.Agent = agentItem;
-                    var agent = GetParentAgent(agentItem);
-                    _actionDataSource = _actionDataSource
-                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Action));
-                    _objectDataSource = _objectDataSource
-                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Object));
-                    _locativeDataSource = _locativeDataSource
-                        .Intersect(GetRelevant(agent, Relations.Agent, Relations.Locative));
-                }
-                else
-                {
-                    situation.Agent = new OntologyNode(-1, "");
-                }
-            }
-
-            if (selectedAction.Name != EmptyNodeName)
-            {
-                situation.Action = selectedAction;
-            }
-            else
-            {
-                if (_actionDataSource.Any())
-                {
-                    var actionItem = _actionDataSource.ToNodeCollection().GetRandom();
-                    situation.Action = actionItem;
-                    _objectDataSource = _objectDataSource
-                        .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Object));
-                    _locativeDataSource = _locativeDataSource
-                        .Intersect(GetRelevant(actionItem, Relations.Action, Relations.Locative));
-                }
-                else
-                {
-                    situation.Action = new OntologyNode(-1, "");
-                }
-            }
-
-            if (selectedObject.Name != EmptyNodeName)
-            {
-                situation.Object = selectedObject;
-            }
-            else
-            {
-                if (_objectDataSource.Any())
-                {
-                    var objectItem = _objectDataSource.ToNodeCollection().GetRandom();
-                    situation.Object = objectItem;
-                    _locativeDataSource = _locativeDataSource
-                        .Intersect(GetRelevant(objectItem, Relations.Object, Relations.Locative));
-                }
-                else
-                {
-                    situation.Object = new OntologyNode(-1, "");
-                }
-            }
-
-            situation.Locative = selectedLocative.Name != EmptyNodeName
-                ? selectedLocative
-                : _locativeDataSource.Any()
-                    ? _locativeDataSource.ToNodeCollection().GetRandom()
-                    : new OntologyNode(-1, "");
-
-            _actionDataSource = ActionDataSource;
-            _objectDataSource = ObjectDataSource;
-            _locativeDataSource = LocativeDataSource;
-
-            return situation;
+            return _generator.GenerateSituation(_situation, Nodes.SafeSituation).ToSafeSituation();
         }
     }
 }

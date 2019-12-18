@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Msagl, Version=3.0.0.0, Culture=neutral, PublicKeyToken=640c57aa40e7ae7d">
+      <HintPath>..\packages\Microsoft.Msagl.1.1.3\lib\net40\Microsoft.Msagl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -40,13 +44,16 @@
   <ItemGroup>
     <Compile Include="Constants\Nodes.cs" />
     <Compile Include="Constants\Relations.cs" />
+    <Compile Include="EmptyOntologyNode.cs" />
     <Compile Include="Extensions\NodeCollectionExtensions.cs" />
     <Compile Include="Extensions\NodeExtensions.cs" />
     <Compile Include="Extensions\NodeExtensions.Nested.cs" />
     <Compile Include="Extensions\NodeExtensions.Relations.cs" />
     <Compile Include="Extensions\RelationCollectionExtensions.cs" />
+    <Compile Include="Extensions\SituationExtensions.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelevantNodes.cs" />
     <Compile Include="Situations\DangerousSituation.cs" />
     <Compile Include="Situations\SafeSituation.cs" />
     <Compile Include="Situations\Situation.cs" />
@@ -56,6 +63,9 @@
       <Project>{8e256493-a732-492c-9e0a-e17a69fc5b34}</Project>
       <Name>PoemGenerator.OntologyModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

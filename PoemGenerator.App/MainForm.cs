@@ -154,13 +154,13 @@ namespace PoemGenerator.App
 		private void ButtonGenerateClick(object sender, EventArgs e)
 		{
 			var safeSituation = _safeSituationGroupBox.GetSituation();
-			var dangerousSituation = _generator.GenerateDangerousSituation();
+			var dangerousSituation = _generator.GenerateDangerousSituation(safeSituation);
 			_situations = new List<Situation> {safeSituation, dangerousSituation};
 			
 			var builder = new StringBuilder();
 			builder.Append($"{safeSituation.Agent} {safeSituation.Action} {safeSituation.Object} {safeSituation.Locative}");
 			builder.Append(Environment.NewLine);
-			builder.Append($"{safeSituation.Agent} {dangerousSituation.Action} {dangerousSituation.Object} {dangerousSituation.Locative}");
+			builder.Append($"{dangerousSituation.Agent} {dangerousSituation.Action} {dangerousSituation.Object} {dangerousSituation.Locative}");
 			
 			_poemTextBox.Text = builder.ToString();
 		}
