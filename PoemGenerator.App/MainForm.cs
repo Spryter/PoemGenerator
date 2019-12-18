@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using PoemGenerator.App.Controls;
@@ -77,7 +78,8 @@ namespace PoemGenerator.App
         {
 	        _poemTextBox = new RichTextBox
 	        {
-		        Dock = DockStyle.Fill
+		        Dock = DockStyle.Fill,
+		        Font = new Font("Microsoft Sans Serif", 15f)
 	        };
 	        _poemTextBox.Click += PoemTextBoxClick;
 

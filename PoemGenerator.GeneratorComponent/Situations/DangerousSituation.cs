@@ -1,19 +1,17 @@
-﻿using PoemGenerator.GeneratorComponent.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using PoemGenerator.GeneratorComponent.Constants;
+using PoemGenerator.GeneratorComponent.Extensions;
 using PoemGenerator.OntologyModel.Abstractions;
-using PoemGenerator.OntologyModel.Collections;
 
 namespace PoemGenerator.GeneratorComponent.Situations
 {
     public class DangerousSituation: Situation
     {
-        public override IReadOnlyNodeCollection GetNodes()
+        protected override IEnumerable<IReadOnlyNode> GetRelevantToSituationActions()
         {
-            return new[] {Agent, Action, Object, Locative}.ToNodeCollection();
-        }
-
-        public override IReadOnlyRelationCollection GetRelations()
-        {
-            return new RelationCollection();
+            return Action.To(Relations.Action)
+                .Where(x => x.FromIsANested().Any(y => y.Name == Nodes.DangerousSituation));
         }
     }
 }
