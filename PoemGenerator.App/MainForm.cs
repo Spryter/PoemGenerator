@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LingvoNET;
 using PoemGenerator.App.Controls;
 using PoemGenerator.GeneratorComponent;
+using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntolisAdapter;
 using PoemGenerator.OntologyModel;
@@ -158,13 +161,63 @@ namespace PoemGenerator.App
 			var safeSituation = _safeSituationGroupBox.GetSituation();
 			var dangerousSituation = _generator.GenerateDangerousSituation(safeSituation);
 			_situations = new List<Situation> {safeSituation, dangerousSituation};
-			
+
+	
 			var builder = new StringBuilder();
-			builder.Append($"{safeSituation.Agent} {safeSituation.Action} {safeSituation.Object} {safeSituation.Locative}");
+			builder.Append(GetMorphedSituationString(safeSituation));
 			builder.Append(Environment.NewLine);
-			builder.Append($"{dangerousSituation.Agent} {dangerousSituation.Action} {dangerousSituation.Object} {dangerousSituation.Locative}");
+			builder.Append(GetMorphedSituationString(dangerousSituation));
 			
 			_poemTextBox.Text = builder.ToString();
+		}
+
+		private string GetMorphedSituationString(Situation situation)
+		{
+			var builder = new StringBuilder();
+			string morphedAction = "";
+			string morphedObject = "";
+			string morphedLocative = "";
+			var _action = Verbs.FindSimilar(situation.Action.Name);
+			if (_action != null)
+			{
+				var _agent = Nouns.FindOne(situation.Agent.Name);
+				Gender agentGender;
+				if (_agent == null)
+				{
+					agentGender = Gender.M;
+				}
+				else
+				{
+					agentGender = _agent.Gender;
+				}
+				morphedAction = _action.Past(Voice.Active, agentGender);
+			}
+
+			if (situation.Object.Name != EmptyOntologyNode.Name)
+			{
+				var _object = Nouns.FindSimilar(situation.Object.Name);
+				if (_object != null)
+				{
+					morphedObject = _object[Case.Accusative];
+				}
+			}
+
+			if (situation.Locative.Name != EmptyOntologyNode.Name)
+			{
+				var _locative = Nouns.FindSimilar(situation.Locative.Name);
+				if (_locative != null)
+				{
+					var preposition = situation.Locative.FromRelations
+						.Where(x => x.Name == Relations.Prepostion)
+						.Select(x => x.To.Name)
+						.FirstOrDefault();
+					morphedLocative = new StringBuilder().Append($"{preposition} {_locative[Case.Locative]}").ToString();
+				}
+				
+			}
+
+			builder.Append($"{situation.Agent} {morphedAction} {morphedObject} {morphedLocative}");
+			return builder.ToString();
 		}
 
 		private void UpdateControlsWithOntology(Ontology ontology)

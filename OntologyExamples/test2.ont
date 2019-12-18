@@ -1,5 +1,5 @@
 {
-    "last_id": "412",
+    "last_id": "428",
     "namespaces": {
         "default": "http://knova.ru/user/1571847376741",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -37,7 +37,7 @@
             "attributes": {
             },
             "id": "86",
-            "name": "пальчики",
+            "name": "пальчик",
             "position_x": 1454,
             "position_y": 840
         },
@@ -159,15 +159,15 @@
             "id": "205",
             "name": "трансформатор",
             "position_x": 1375,
-            "position_y": 614
+            "position_y": 613
         },
         {
             "attributes": {
             },
             "id": "208",
             "name": "сунуть",
-            "position_x": 1386,
-            "position_y": 918
+            "position_x": 1353,
+            "position_y": 891
         },
         {
             "attributes": {
@@ -181,9 +181,9 @@
             "attributes": {
             },
             "id": "255",
-            "name": "дома",
-            "position_x": 601,
-            "position_y": 958
+            "name": "дом",
+            "position_x": 610,
+            "position_y": 950
         },
         {
             "attributes": {
@@ -293,9 +293,9 @@
             "attributes": {
             },
             "id": "307",
-            "name": "есть",
-            "position_x": 480,
-            "position_y": 1078
+            "name": "кушать",
+            "position_x": 483,
+            "position_y": 1050
         },
         {
             "attributes": {
@@ -350,8 +350,8 @@
             },
             "id": "333",
             "name": "Москва",
-            "position_x": 1702,
-            "position_y": 910
+            "position_x": 1701,
+            "position_y": 909
         },
         {
             "attributes": {
@@ -437,7 +437,7 @@
             "attributes": {
             },
             "id": "379",
-            "name": "кости",
+            "name": "черепок",
             "position_x": 1981,
             "position_y": 932
         },
@@ -480,6 +480,22 @@
             "name": "африка",
             "position_x": 1584,
             "position_y": 942
+        },
+        {
+            "attributes": {
+            },
+            "id": "416",
+            "name": "на",
+            "position_x": 690,
+            "position_y": 536
+        },
+        {
+            "attributes": {
+            },
+            "id": "417",
+            "name": "в",
+            "position_x": 1312,
+            "position_y": 1089
         }
     ],
     "relations": [
@@ -1042,6 +1058,86 @@
             "id": "412",
             "name": "",
             "source_node_id": "397"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "307",
+            "id": "418",
+            "name": "",
+            "source_node_id": "307"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "416",
+            "id": "420",
+            "name": "preposition",
+            "source_node_id": "289"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "421",
+            "name": "preposition",
+            "source_node_id": "255"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "422",
+            "name": "preposition",
+            "source_node_id": "408"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "423",
+            "name": "preposition",
+            "source_node_id": "90"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "424",
+            "name": "preposition",
+            "source_node_id": "205"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "425",
+            "name": "preposition",
+            "source_node_id": "164"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "426",
+            "name": "preposition",
+            "source_node_id": "333"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "427",
+            "name": "preposition",
+            "source_node_id": "390"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "417",
+            "id": "428",
+            "name": "preposition",
+            "source_node_id": "363"
         }
     ],
     "visualize_ont_path": ""

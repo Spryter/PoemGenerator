@@ -21,5 +21,7 @@
         public const string Agent = "agent";
 
         public const string Affects = "affects";
-    }
+
+		public const string Prepostion = "preposition";
+	}
 }
