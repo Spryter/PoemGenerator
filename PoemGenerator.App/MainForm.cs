@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using LingvoNET;
 using PoemGenerator.App.Controls;
 using PoemGenerator.GeneratorComponent;
-using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntolisAdapter;
 using PoemGenerator.OntologyModel;
@@ -19,6 +16,8 @@ namespace PoemGenerator.App
 		private readonly Ontolis _ontolis;
 		
 		private readonly OntologyViewModel _ontologyViewModel;
+
+		private readonly Morpher _morpher;
 		
 		private Generator _generator;
 
@@ -39,6 +38,7 @@ namespace PoemGenerator.App
 			InitializeComponent();
 			_ontologyViewModel = new OntologyViewModel();
 			_ontolis = new Ontolis();
+			_morpher = new Morpher();
 			InitializeMenu();
             InitializeForm();
 		}
@@ -162,62 +162,12 @@ namespace PoemGenerator.App
 			var dangerousSituation = _generator.GenerateDangerousSituation(safeSituation);
 			_situations = new List<Situation> {safeSituation, dangerousSituation};
 
-	
 			var builder = new StringBuilder();
-			builder.Append(GetMorphedSituationString(safeSituation));
+			builder.Append(_morpher.GetMorphedSituationString(safeSituation));
 			builder.Append(Environment.NewLine);
-			builder.Append(GetMorphedSituationString(dangerousSituation));
+			builder.Append(_morpher.GetMorphedSituationString(dangerousSituation));
 			
 			_poemTextBox.Text = builder.ToString();
-		}
-
-		private string GetMorphedSituationString(Situation situation)
-		{
-			var builder = new StringBuilder();
-			string morphedAction = "";
-			string morphedObject = "";
-			string morphedLocative = "";
-			var _action = Verbs.FindSimilar(situation.Action.Name);
-			if (_action != null)
-			{
-				var _agent = Nouns.FindOne(situation.Agent.Name);
-				Gender agentGender;
-				if (_agent == null)
-				{
-					agentGender = Gender.M;
-				}
-				else
-				{
-					agentGender = _agent.Gender;
-				}
-				morphedAction = _action.Past(Voice.Active, agentGender);
-			}
-
-			if (situation.Object.Name != EmptyOntologyNode.Name)
-			{
-				var _object = Nouns.FindSimilar(situation.Object.Name);
-				if (_object != null)
-				{
-					morphedObject = _object[Case.Accusative];
-				}
-			}
-
-			if (situation.Locative.Name != EmptyOntologyNode.Name)
-			{
-				var _locative = Nouns.FindSimilar(situation.Locative.Name);
-				if (_locative != null)
-				{
-					var preposition = situation.Locative.FromRelations
-						.Where(x => x.Name == Relations.Prepostion)
-						.Select(x => x.To.Name)
-						.FirstOrDefault();
-					morphedLocative = new StringBuilder().Append($"{preposition} {_locative[Case.Locative]}").ToString();
-				}
-				
-			}
-
-			builder.Append($"{situation.Agent} {morphedAction} {morphedObject} {morphedLocative}");
-			return builder.ToString();
 		}
 
 		private void UpdateControlsWithOntology(Ontology ontology)

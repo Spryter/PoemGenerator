@@ -20,6 +20,9 @@ namespace PoemGenerator.GeneratorComponent.Situations
 
         private static IReadOnlyNode GetParentAgent(IReadOnlyNode agent)
         {
+            if (agent.Name == EmptyOntologyNode.Name)
+                return agent;
+            
             var agents = new Queue<IReadOnlyNode>();
             agents.Enqueue(agent);
             while (agents.Count > 0)
