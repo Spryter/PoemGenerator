@@ -1,5 +1,5 @@
 {
-    "last_id": "428",
+    "last_id": "452",
     "namespaces": {
         "default": "http://knova.ru/user/1571847376741",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -15,7 +15,7 @@
             "id": "74",
             "name": "опасная ситуация",
             "position_x": 1591,
-            "position_y": 353
+            "position_y": 511
         },
         {
             "attributes": {
@@ -23,7 +23,7 @@
             "id": "77",
             "name": "ребеночек",
             "position_x": 1958,
-            "position_y": 302
+            "position_y": 460
         },
         {
             "attributes": {
@@ -31,7 +31,7 @@
             "id": "78",
             "name": "мальчик",
             "position_x": 1880,
-            "position_y": 431
+            "position_y": 589
         },
         {
             "attributes": {
@@ -39,15 +39,15 @@
             "id": "86",
             "name": "пальчик",
             "position_x": 1454,
-            "position_y": 840
+            "position_y": 998
         },
         {
             "attributes": {
             },
             "id": "90",
             "name": "розетка",
-            "position_x": 1476,
-            "position_y": 702
+            "position_x": 1463,
+            "position_y": 853
         },
         {
             "attributes": {
@@ -55,7 +55,7 @@
             "id": "125",
             "name": "ситуация",
             "position_x": 1363,
-            "position_y": 259
+            "position_y": 417
         },
         {
             "attributes": {
@@ -63,7 +63,7 @@
             "id": "127",
             "name": "безопасная ситуация",
             "position_x": 1053,
-            "position_y": 362
+            "position_y": 520
         },
         {
             "attributes": {
@@ -71,7 +71,7 @@
             "id": "129",
             "name": ".",
             "position_x": 993,
-            "position_y": 561
+            "position_y": 719
         },
         {
             "attributes": {
@@ -79,15 +79,7 @@
             "id": "141",
             "name": "человек",
             "position_x": 2016,
-            "position_y": 200
-        },
-        {
-            "attributes": {
-            },
-            "id": "149",
-            "name": "пилочка",
-            "position_x": 1155,
-            "position_y": 1081
+            "position_y": 358
         },
         {
             "attributes": {
@@ -95,7 +87,7 @@
             "id": "151",
             "name": ".",
             "position_x": 985,
-            "position_y": 700
+            "position_y": 858
         },
         {
             "attributes": {
@@ -103,7 +95,7 @@
             "id": "153",
             "name": "найти",
             "position_x": 1057,
-            "position_y": 873
+            "position_y": 1031
         },
         {
             "attributes": {
@@ -111,7 +103,7 @@
             "id": "155",
             "name": "пулемет",
             "position_x": 882,
-            "position_y": 860
+            "position_y": 1018
         },
         {
             "attributes": {
@@ -119,7 +111,7 @@
             "id": "157",
             "name": ".",
             "position_x": 1085,
-            "position_y": 650
+            "position_y": 808
         },
         {
             "attributes": {
@@ -127,7 +119,7 @@
             "id": "160",
             "name": "тигр",
             "position_x": 1138,
-            "position_y": 761
+            "position_y": 919
         },
         {
             "attributes": {
@@ -135,23 +127,23 @@
             "id": "162",
             "name": "кормить",
             "position_x": 1066,
-            "position_y": 784
+            "position_y": 942
         },
         {
             "attributes": {
             },
             "id": "164",
             "name": "цирк",
-            "position_x": 1207,
-            "position_y": 730
+            "position_x": 1210,
+            "position_y": 879
         },
         {
             "attributes": {
             },
             "id": "203",
             "name": ".",
-            "position_x": 1243,
-            "position_y": 652
+            "position_x": 1240,
+            "position_y": 780
         },
         {
             "attributes": {
@@ -159,15 +151,15 @@
             "id": "205",
             "name": "трансформатор",
             "position_x": 1375,
-            "position_y": 613
+            "position_y": 771
         },
         {
             "attributes": {
             },
             "id": "208",
             "name": "сунуть",
-            "position_x": 1353,
-            "position_y": 891
+            "position_x": 1286,
+            "position_y": 897
         },
         {
             "attributes": {
@@ -175,47 +167,47 @@
             "id": "254",
             "name": ".",
             "position_x": 691,
-            "position_y": 855
+            "position_y": 1013
         },
         {
             "attributes": {
             },
             "id": "255",
             "name": "дом",
-            "position_x": 610,
-            "position_y": 950
+            "position_x": 601,
+            "position_y": 1164
         },
         {
             "attributes": {
             },
             "id": "259",
             "name": ".",
-            "position_x": 853,
-            "position_y": 966
+            "position_x": 839,
+            "position_y": 1110
         },
         {
             "attributes": {
             },
             "id": "263",
-            "name": "ножичек",
-            "position_x": 1101,
-            "position_y": 1148
+            "name": "граната",
+            "position_x": 1113,
+            "position_y": 1284
         },
         {
             "attributes": {
             },
             "id": "272",
             "name": ".",
-            "position_x": 687,
-            "position_y": 1055
+            "position_x": 674,
+            "position_y": 1201
         },
         {
             "attributes": {
             },
             "id": "278",
-            "name": "потерять",
-            "position_x": 540,
-            "position_y": 1136
+            "name": "достать",
+            "position_x": 557,
+            "position_y": 1329
         },
         {
             "attributes": {
@@ -223,23 +215,23 @@
             "id": "280",
             "name": ".",
             "position_x": 771,
-            "position_y": 1110
+            "position_y": 1268
         },
         {
             "attributes": {
             },
             "id": "281",
             "name": "кладовка",
-            "position_x": 938,
-            "position_y": 1203
+            "position_x": 984,
+            "position_y": 1334
         },
         {
             "attributes": {
             },
             "id": "284",
             "name": "открыть",
-            "position_x": 613,
-            "position_y": 1196
+            "position_x": 662,
+            "position_y": 1353
         },
         {
             "attributes": {
@@ -247,7 +239,7 @@
             "id": "289",
             "name": "дача",
             "position_x": 777,
-            "position_y": 825
+            "position_y": 983
         },
         {
             "attributes": {
@@ -255,7 +247,7 @@
             "id": "291",
             "name": ".",
             "position_x": 426,
-            "position_y": 877
+            "position_y": 1035
         },
         {
             "attributes": {
@@ -263,7 +255,7 @@
             "id": "292",
             "name": "рыба",
             "position_x": 255,
-            "position_y": 1182
+            "position_y": 1340
         },
         {
             "attributes": {
@@ -271,7 +263,7 @@
             "id": "296",
             "name": "ловить",
             "position_x": 200,
-            "position_y": 917
+            "position_y": 1075
         },
         {
             "attributes": {
@@ -279,7 +271,7 @@
             "id": "298",
             "name": ".",
             "position_x": 687,
-            "position_y": 723
+            "position_y": 881
         },
         {
             "attributes": {
@@ -287,7 +279,7 @@
             "id": "305",
             "name": ".",
             "position_x": 536,
-            "position_y": 919
+            "position_y": 1077
         },
         {
             "attributes": {
@@ -295,7 +287,7 @@
             "id": "307",
             "name": "кушать",
             "position_x": 483,
-            "position_y": 1050
+            "position_y": 1208
         },
         {
             "attributes": {
@@ -303,7 +295,7 @@
             "id": "309",
             "name": ".",
             "position_x": 407,
-            "position_y": 1032
+            "position_y": 1190
         },
         {
             "attributes": {
@@ -311,7 +303,7 @@
             "id": "315",
             "name": "пирог",
             "position_x": 376,
-            "position_y": 1161
+            "position_y": 1319
         },
         {
             "attributes": {
@@ -319,15 +311,15 @@
             "id": "323",
             "name": "*",
             "position_x": 1783,
-            "position_y": 525
+            "position_y": 683
         },
         {
             "attributes": {
             },
             "id": "326",
             "name": ".",
-            "position_x": 1791,
-            "position_y": 674
+            "position_x": 1783,
+            "position_y": 829
         },
         {
             "attributes": {
@@ -335,15 +327,15 @@
             "id": "328",
             "name": "зенитка",
             "position_x": 829,
-            "position_y": 722
+            "position_y": 880
         },
         {
             "attributes": {
             },
             "id": "330",
             "name": "Ту-140",
-            "position_x": 1881,
-            "position_y": 846
+            "position_x": 1902,
+            "position_y": 993
         },
         {
             "attributes": {
@@ -351,23 +343,23 @@
             "id": "333",
             "name": "Москва",
             "position_x": 1701,
-            "position_y": 909
+            "position_y": 1067
         },
         {
             "attributes": {
             },
             "id": "335",
             "name": "не дойти",
-            "position_x": 1797,
-            "position_y": 909
+            "position_x": 1779,
+            "position_y": 1070
         },
         {
             "attributes": {
             },
             "id": "339",
             "name": "пионер",
-            "position_x": 2003,
-            "position_y": 433
+            "position_x": 1984,
+            "position_y": 586
         },
         {
             "attributes": {
@@ -375,15 +367,15 @@
             "id": "341",
             "name": "взрослый",
             "position_x": 2096,
-            "position_y": 304
+            "position_y": 462
         },
         {
             "attributes": {
             },
             "id": "344",
             "name": ".",
-            "position_x": 1704,
-            "position_y": 600
+            "position_x": 1690,
+            "position_y": 756
         },
         {
             "attributes": {
@@ -391,23 +383,23 @@
             "id": "354",
             "name": "*",
             "position_x": 1007,
-            "position_y": 459
+            "position_y": 617
         },
         {
             "attributes": {
             },
             "id": "359",
-            "name": "никто",
-            "position_x": 1659,
-            "position_y": 763
+            "name": "люди",
+            "position_x": 1633,
+            "position_y": 936
         },
         {
             "attributes": {
             },
             "id": "361",
             "name": "не жить",
-            "position_x": 1563,
-            "position_y": 760
+            "position_x": 1540,
+            "position_y": 905
         },
         {
             "attributes": {
@@ -415,7 +407,7 @@
             "id": "363",
             "name": "деревня",
             "position_x": 1535,
-            "position_y": 627
+            "position_y": 785
         },
         {
             "attributes": {
@@ -423,15 +415,15 @@
             "id": "365",
             "name": ".",
             "position_x": 2077,
-            "position_y": 631
+            "position_y": 789
         },
         {
             "attributes": {
             },
             "id": "373",
             "name": "папа",
-            "position_x": 2136,
-            "position_y": 443
+            "position_x": 2050,
+            "position_y": 588
         },
         {
             "attributes": {
@@ -439,15 +431,15 @@
             "id": "379",
             "name": "черепок",
             "position_x": 1981,
-            "position_y": 932
+            "position_y": 1090
         },
         {
             "attributes": {
             },
             "id": "390",
             "name": "речка",
-            "position_x": 1884,
-            "position_y": 645
+            "position_x": 1897,
+            "position_y": 850
         },
         {
             "attributes": {
@@ -455,7 +447,7 @@
             "id": "392",
             "name": ".",
             "position_x": 1968,
-            "position_y": 753
+            "position_y": 911
         },
         {
             "attributes": {
@@ -463,7 +455,7 @@
             "id": "397",
             "name": ".",
             "position_x": 2119,
-            "position_y": 773
+            "position_y": 931
         },
         {
             "attributes": {
@@ -471,15 +463,15 @@
             "id": "399",
             "name": "исчезнуть",
             "position_x": 2097,
-            "position_y": 925
+            "position_y": 1083
         },
         {
             "attributes": {
             },
             "id": "408",
             "name": "африка",
-            "position_x": 1584,
-            "position_y": 942
+            "position_x": 1564,
+            "position_y": 1017
         },
         {
             "attributes": {
@@ -487,15 +479,79 @@
             "id": "416",
             "name": "на",
             "position_x": 690,
-            "position_y": 536
+            "position_y": 694
         },
         {
             "attributes": {
             },
             "id": "417",
             "name": "в",
-            "position_x": 1312,
-            "position_y": 1089
+            "position_x": 1686,
+            "position_y": 200
+        },
+        {
+            "attributes": {
+            },
+            "id": "429",
+            "name": ".",
+            "position_x": 1900,
+            "position_y": 1121
+        },
+        {
+            "attributes": {
+            },
+            "id": "431",
+            "name": "дрессировщик",
+            "position_x": 1673,
+            "position_y": 1140
+        },
+        {
+            "attributes": {
+            },
+            "id": "433",
+            "name": "сэкономил",
+            "position_x": 2085,
+            "position_y": 1219
+        },
+        {
+            "attributes": {
+            },
+            "id": "435",
+            "name": "еда",
+            "position_x": 1922,
+            "position_y": 1300
+        },
+        {
+            "attributes": {
+            },
+            "id": "440",
+            "name": ".",
+            "position_x": 1833,
+            "position_y": 1215
+        },
+        {
+            "attributes": {
+            },
+            "id": "441",
+            "name": "не видеть",
+            "position_x": 1494,
+            "position_y": 1197
+        },
+        {
+            "attributes": {
+            },
+            "id": "444",
+            "name": "тушенка",
+            "position_x": 1765,
+            "position_y": 1357
+        },
+        {
+            "attributes": {
+            },
+            "id": "449",
+            "name": "электрик",
+            "position_x": 2109,
+            "position_y": 617
         }
     ],
     "relations": [
@@ -638,14 +694,6 @@
         {
             "attributes": {
             },
-            "destination_node_id": "149",
-            "id": "276",
-            "name": "object",
-            "source_node_id": "259"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "254",
             "id": "277",
             "name": "is_a",
@@ -696,14 +744,6 @@
             },
             "destination_node_id": "263",
             "id": "287",
-            "name": "object",
-            "source_node_id": "272"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "149",
-            "id": "288",
             "name": "object",
             "source_node_id": "272"
         },
@@ -1138,6 +1178,118 @@
             "id": "428",
             "name": "preposition",
             "source_node_id": "363"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "323",
+            "id": "430",
+            "name": "",
+            "source_node_id": "429"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "431",
+            "id": "432",
+            "name": "actor",
+            "source_node_id": "429"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "433",
+            "id": "434",
+            "name": "action",
+            "source_node_id": "429"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "435",
+            "id": "436",
+            "name": "object",
+            "source_node_id": "429"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "431",
+            "id": "437",
+            "name": "affects",
+            "source_node_id": "160"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "323",
+            "id": "442",
+            "name": "is_a",
+            "source_node_id": "440"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "441",
+            "id": "443",
+            "name": "action",
+            "source_node_id": "440"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "444",
+            "id": "445",
+            "name": "object",
+            "source_node_id": "440"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "440",
+            "id": "446",
+            "name": "",
+            "source_node_id": "440"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "373",
+            "id": "447",
+            "name": "agent",
+            "source_node_id": "440"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "281",
+            "id": "448",
+            "name": "a_part_of",
+            "source_node_id": "444"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "341",
+            "id": "450",
+            "name": "is_a",
+            "source_node_id": "449"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "449",
+            "id": "451",
+            "name": "affects",
+            "source_node_id": "205"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "361",
+            "id": "452",
+            "name": "affects",
+            "source_node_id": "263"
         }
     ],
     "visualize_ont_path": ""
