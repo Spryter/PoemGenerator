@@ -8,7 +8,7 @@ namespace PoemGenerator.GeneratorComponent.Extensions
 {
     public static class NodeCollectionExtensions
     {
-        private static Random _random = new Random();
+        private static readonly Random Random = new Random();
         
         /// <summary>
         /// Возвращает узел с заданным именем, если его не существует - возвращает null.
@@ -29,7 +29,7 @@ namespace PoemGenerator.GeneratorComponent.Extensions
         public static IReadOnlyNode GetRandom(this IReadOnlyNodeCollection nodes)
         {
             var list = nodes.ToList();
-            var index = _random.Next(nodes.Count);
+            var index = Random.Next(nodes.Count);
             return list[index];
         }
         

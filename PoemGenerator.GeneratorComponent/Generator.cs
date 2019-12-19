@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PoemGenerator.GeneratorComponent.Constants;
 using PoemGenerator.GeneratorComponent.Extensions;
+using PoemGenerator.GeneratorComponent.Helpers;
 using PoemGenerator.GeneratorComponent.Situations;
 using PoemGenerator.OntologyModel;
 using PoemGenerator.OntologyModel.Abstractions;
@@ -220,36 +221,38 @@ namespace PoemGenerator.GeneratorComponent
             var dangerousSituation = new DangerousSituation();
             var nodes = safeSituation
                 .GetNodes()
-                .Where(x => x.FromRelations
-                    .Any(y => y.Name == Relations.Affects || y.Name == Relations.APartOf)
+                .Where(x => 
+                    x.FromRelations.Any(y => y.Name == Relations.Affects || y.Name == Relations.APartOf) || 
+                    x.ToRelations.Any(y => y.Name == Relations.Affects || y.Name == Relations.APartOf)
                 )
                 .ToNodeCollection();
             if (nodes.Count > 0)
             {
                 var node = nodes.GetRandom();
-                var randomDangerousNode = node.FromRelations
+                var relation = node.FromRelations
+                    .Union(node.ToRelations)
                     .Where(x => x.Name == Relations.Affects || x.Name == Relations.APartOf)
-                    .Select(x => x.To)
-                    .ToNodeCollection()
+                    .ToRelationCollection()
                     .GetRandom();
-                if (randomDangerousNode.ToRelations.Any(x => x.Name == Relations.Agent))
+                var dangerousNode = OntologyHelper.GetDangerousNode(relation);
+                if (dangerousNode.ToRelations.Any(x => x.Name == Relations.Agent))
                 {
-                    dangerousSituation.Agent = randomDangerousNode;
+                    dangerousSituation.Agent = dangerousNode;
                 }
                 
-                if (randomDangerousNode.ToRelations.Any(x => x.Name == Relations.Action))
+                if (dangerousNode.ToRelations.Any(x => x.Name == Relations.Action))
                 {
-                    dangerousSituation.Action = randomDangerousNode;
+                    dangerousSituation.Action = dangerousNode;
                 }
                 
-                if (randomDangerousNode.ToRelations.Any(x => x.Name == Relations.Object))
+                if (dangerousNode.ToRelations.Any(x => x.Name == Relations.Object))
                 {
-                    dangerousSituation.Object = randomDangerousNode;
+                    dangerousSituation.Object = dangerousNode;
                 }
                 
-                if (randomDangerousNode.ToRelations.Any(x => x.Name == Relations.Locative))
+                if (dangerousNode.ToRelations.Any(x => x.Name == Relations.Locative))
                 {
-                    dangerousSituation.Locative = randomDangerousNode;
+                    dangerousSituation.Locative = dangerousNode;
                 }
             }
             return GenerateSituation(dangerousSituation, Nodes.DangerousSituation).ToDangerousSituation();
