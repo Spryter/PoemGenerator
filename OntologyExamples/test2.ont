@@ -1,5 +1,5 @@
 {
-    "last_id": "452",
+    "last_id": "463",
     "namespaces": {
         "default": "http://knova.ru/user/1571847376741",
         "ontolis-avis": "http://knova.ru/ontolis-avis",
@@ -151,7 +151,7 @@
             "id": "205",
             "name": "трансформатор",
             "position_x": 1375,
-            "position_y": 771
+            "position_y": 763
         },
         {
             "attributes": {
@@ -310,8 +310,8 @@
             },
             "id": "323",
             "name": "*",
-            "position_x": 1783,
-            "position_y": 683
+            "position_x": 1800,
+            "position_y": 650
         },
         {
             "attributes": {
@@ -389,17 +389,17 @@
             "attributes": {
             },
             "id": "359",
-            "name": "люди",
-            "position_x": 1633,
-            "position_y": 936
+            "name": "народ",
+            "position_x": 1653,
+            "position_y": 939
         },
         {
             "attributes": {
             },
             "id": "361",
             "name": "не жить",
-            "position_x": 1540,
-            "position_y": 905
+            "position_x": 1522,
+            "position_y": 903
         },
         {
             "attributes": {
@@ -423,7 +423,7 @@
             "id": "373",
             "name": "папа",
             "position_x": 2050,
-            "position_y": 588
+            "position_y": 598
         },
         {
             "attributes": {
@@ -494,8 +494,8 @@
             },
             "id": "429",
             "name": ".",
-            "position_x": 1900,
-            "position_y": 1121
+            "position_x": 1902,
+            "position_y": 1116
         },
         {
             "attributes": {
@@ -509,17 +509,17 @@
             "attributes": {
             },
             "id": "433",
-            "name": "сэкономил",
-            "position_x": 2085,
-            "position_y": 1219
+            "name": "получить",
+            "position_x": 2084,
+            "position_y": 1170
         },
         {
             "attributes": {
             },
             "id": "435",
             "name": "еда",
-            "position_x": 1922,
-            "position_y": 1300
+            "position_x": 1865,
+            "position_y": 1314
         },
         {
             "attributes": {
@@ -542,7 +542,7 @@
             },
             "id": "444",
             "name": "тушенка",
-            "position_x": 1765,
+            "position_x": 1764,
             "position_y": 1357
         },
         {
@@ -550,8 +550,32 @@
             },
             "id": "449",
             "name": "электрик",
-            "position_x": 2109,
-            "position_y": 617
+            "position_x": 2098,
+            "position_y": 680
+        },
+        {
+            "attributes": {
+            },
+            "id": "454",
+            "name": ".",
+            "position_x": 1938,
+            "position_y": 1218
+        },
+        {
+            "attributes": {
+            },
+            "id": "456",
+            "name": ".",
+            "position_x": 2045,
+            "position_y": 1254
+        },
+        {
+            "attributes": {
+            },
+            "id": "461",
+            "name": "электричество",
+            "position_x": 1964,
+            "position_y": 1338
         }
     ],
     "relations": [
@@ -1184,15 +1208,7 @@
             },
             "destination_node_id": "323",
             "id": "430",
-            "name": "",
-            "source_node_id": "429"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "431",
-            "id": "432",
-            "name": "actor",
+            "name": "is_a",
             "source_node_id": "429"
         },
         {
@@ -1201,14 +1217,6 @@
             "destination_node_id": "433",
             "id": "434",
             "name": "action",
-            "source_node_id": "429"
-        },
-        {
-            "attributes": {
-            },
-            "destination_node_id": "435",
-            "id": "436",
-            "name": "object",
             "source_node_id": "429"
         },
         {
@@ -1262,14 +1270,6 @@
         {
             "attributes": {
             },
-            "destination_node_id": "281",
-            "id": "448",
-            "name": "a_part_of",
-            "source_node_id": "444"
-        },
-        {
-            "attributes": {
-            },
             "destination_node_id": "341",
             "id": "450",
             "name": "is_a",
@@ -1290,6 +1290,70 @@
             "id": "452",
             "name": "affects",
             "source_node_id": "263"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "449",
+            "id": "453",
+            "name": "",
+            "source_node_id": "429"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "429",
+            "id": "455",
+            "name": "is_a",
+            "source_node_id": "454"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "429",
+            "id": "457",
+            "name": "is_a",
+            "source_node_id": "456"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "431",
+            "id": "458",
+            "name": "agent",
+            "source_node_id": "454"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "435",
+            "id": "459",
+            "name": "object",
+            "source_node_id": "454"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "449",
+            "id": "460",
+            "name": "agent",
+            "source_node_id": "456"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "461",
+            "id": "462",
+            "name": "object",
+            "source_node_id": "456"
+        },
+        {
+            "attributes": {
+            },
+            "destination_node_id": "444",
+            "id": "463",
+            "name": "affects",
+            "source_node_id": "281"
         }
     ],
     "visualize_ont_path": ""
